@@ -1,0 +1,27 @@
+# Private working notes, never published
+CONTEXT.md
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.coverage
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Written by the pipeline at run time
+data/out/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
