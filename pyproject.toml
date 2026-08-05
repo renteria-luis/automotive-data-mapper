@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "automotive-data-mapper"
+version = "0.1.0"
+description = "Maps vehicle service records from CSV, JSON and XML feeds into one canonical schema, and separates the records it cannot map from the ones it can."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Luis Renteria" }]
+keywords = ["data-mapping", "data-quality", "etl", "pydantic", "pandas"]
+
+dependencies = [
+  "pandas>=2.0",   # reading and reshaping the three feeds
+  "pydantic>=2.6", # validating the canonical schema
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+notebook = ["jupyterlab>=4.0"]
+
+[project.urls]
+Repository = "https://github.com/renteria-luis/automotive-data-mapper"
+
+[tool.setuptools.packages.find]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# E/W: style, F: unused names and undefined symbols, I: import order,
+# UP: outdated Python syntax, B: likely bugs such as mutable default arguments.
+select = ["E", "W", "F", "I", "UP", "B"]
