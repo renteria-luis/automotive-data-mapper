@@ -1,0 +1,27 @@
+RO_Number,VehicleID,SvcDate,Miles,WorkPerformed,ShopName,City,Prov,TechnicianID,InvoiceTotal
+RO-1001,1FTFW1E50KFA12345,03/14/2023,48210,Replaced front brake pads and machined rotors,Riverside Auto Repair,London,ON,T14,612.40
+RO-1002,2T1BURHE4JC021345,04/02/2023,61540,"Oil and filter change, 5W-30 synthetic",RIVERSIDE AUTO REPAIR,London,ON,T09,89.95
+RO-1003,1FTFW1E50KFA12345,07/21/2023,52880,R&R frt brake pads,Riverside Auto Repair Inc.,London,ON,T14,415.00
+RO-1004,1HGCV1F30LA100234,22-Aug-23,33110,Mounted and balanced 4 winter tires,Riverside Auto Repair,London,ON,T22,780.25
+RO-1005,3VWC57BU8KM052318,09/05/2023,,Annual safety inspection,riverside auto repair,London,ON,T09,129.00
+RO-1006,1G1ZD5ST0LF004821,n/a,27430,A/C recharge and leak test,Riverside Auto Repair,London,ON,T31,245.60
+RO-1007,1C4RJFAG8MC612907,10/17/2023,41209,,Riverside Auto Repair,London,ON,T14,0.00
+RO-1008,2T1BURHE4JC021345,11/03/2023,64980,REPLACED BATTERY AND CLEANED TERMINALS,Riverside Auto Repair,London,ON,T22,310.15
+RO-1009,1FTFW1E50KFA1234,12/01/2023,55010,Transmission fluid and filter service,Riverside Auto Repair,London,ON,T09,340.00
+RO-1010,1HGCV1F3OLA100234,01/12/2024,35880,Replaced cabin air filter,Riverside Auto Repair,London,ON,T31,78.50
+RO-1011,2T1BURHE4JC021354,02/08/2024,67220,Front end alignment,Riverside Auto Repair,London,ON,T14,149.99
+RO-1012,KNDEPCAA2M7533104,02/20/2024,18990,Replaced spark plugs and ignition coil #3,Riverside Auto Repair,London,ON,T22,520.00
+RO-1013,1FTFW1E50KFA12345,03/09/2024,39000,Oil change,Riverside Auto Repair,London,ON,T09,79.95
+RO-1014,2HKRW2H86NH512044,04/15/2024,12040,Tire rotation and pressure check,Riverside Auto Repair,London,ON,T31,59.00
+RO-1015,1N4BL4BV4NC108455,05/02/2024,998000,"Replaced windshield, calibrated rain sensor",Riverside Auto Repair,London,ON,T14,890.00
+RO-1016,WBA5R1C54KA018732,06/11/2024,74310,brake fluid flush,Riverside Auto Repair,London,ON,T09,165.00
+RO-1017,1FMCU9J94MUA03917,07/07/2024,22105,Replaced front struts and strut mounts,RIVERSIDE AUTO REPAIR,London,ON,T22,1120.00
+RO-1018,5YJ3E1EA9KF312876,08/19/2024,41200,"12V battery replacement, no start",Riverside Auto Repair,London,ON,T31,295.00
+RO-1019,1HGCV1F30LA100234,09/23/2024,39440,"check engine light diagnosis, scanned codes",Riverside Auto Repair,London,ON,T14,130.00
+RO-1020,1C4RJFAG8MC612907,11/14/2024,47850,Replaced catalytic converter and O2 sensor,Riverside Auto Repair,London,ON,T09,1640.00
+RO-1021,3VWC57BU8KM052318,12/02/2024,30015,LOF svc,riverside auto repair,London,ON,T22,84.20
+RO-1022,1G1ZD5ST0LF004821,01/16/2025,31200,"heater core flush, no heat complaint",Riverside Auto Repair,London,ON,T31,420.00
+RO-1023,KNDEPCAA2M7533104,03/05/2025,24880,Recall 21V-123 airbag inflator replacement,Riverside Auto Repair,London,ON,T14,0.00
+RO-1024,2HKRW2H86NH512044,05/21/2025,19300,Replaced front brake pads and machined rotors,Riverside Auto Repair,London,ON,T09,655.00
+RO-1025,2T1BURHE4JC021345,12/25/2027,70110,Timing belt and water pump replacement,Riverside Auto Repair,London,ON,T22,1450.00
+RO-1026,WBA5R1C54KA018732,06/30/2025,76200,"  Replaced front bumper cover after collision  ",Riverside Auto Repair,London,ON,T31,2310.00

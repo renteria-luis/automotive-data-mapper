@@ -1,0 +1,178 @@
+{
+  "export_version": "2.1",
+  "source_system": "DMS",
+  "repair_orders": [
+    {
+      "ro_id": "DMS-4401",
+      "vin": "1HGCV1F30LA100234",
+      "opened_at": "2023-05-18T09:20:00",
+      "odometer": { "value": 51200, "uom": "KM" },
+      "dealer": { "name": "Forest City Motors", "city": "London", "province": "ON" },
+      "pay_type": "customer",
+      "lines": [
+        {
+          "line_no": 1,
+          "op_code": "BR41",
+          "description": "Replace front brake pads, machine rotors",
+          "labour_hours": 1.8
+        }
+      ]
+    },
+    {
+      "ro_id": "DMS-4402",
+      "vin": "1G1ZD5ST0LF004821",
+      "opened_at": "2023-06-02T14:05:00",
+      "odometer": { "value": 44800, "uom": "KM" },
+      "dealer": { "name": "FOREST CITY MOTORS", "city": "London", "province": "ON" },
+      "pay_type": "warranty",
+      "lines": [
+        {
+          "line_no": 1,
+          "op_code": "SW07",
+          "description": "Software update per TSB 22-118",
+          "labour_hours": 0.5
+        },
+        {
+          "line_no": 2,
+          "op_code": "HV12",
+          "description": "Replace cabin air filter",
+          "labour_hours": 0.3
+        }
+      ]
+    },
+    {
+      "ro_id": "DMS-4403",
+      "vin": "5YJ3E1EA9KF312876",
+      "opened_at": "2023-08-11T11:45:00",
+      "odometer": { "value": 32950, "uom": "KM" },
+      "dealer": { "name": "Forest City Motors Ltd", "city": "London", "province": "ON" },
+      "pay_type": "customer",
+      "lines": [
+        {
+          "line_no": 1,
+          "op_code": "TR03",
+          "description": "Tire rotation and brake inspection",
+          "labour_hours": 0.6
+        }
+      ]
+    },
+    {
+      "ro_id": "DMS-4404",
+      "vin": "1C4RJFAG8MC612907",
+      "opened_at": "2024-01-09T08:30:00",
+      "odometer": { "value": null, "uom": "KM" },
+      "dealer": { "name": "Forest City Motors", "city": "London", "province": "ON" },
+      "pay_type": "internal",
+      "lines": [
+        {
+          "line_no": 1,
+          "op_code": "LO01",
+          "description": "Oil and filter change",
+          "labour_hours": 0.4
+        }
+      ]
+    },
+    {
+      "ro_id": "DMS-4405",
+      "vin": "3vwc57bu8km052318",
+      "opened_at": "2024-02-27T16:10:00",
+      "odometer": { "value": 47600, "uom": "KM" },
+      "dealer": { "name": "Forest City Motors", "city": "London", "province": "ON" },
+      "pay_type": "customer",
+      "lines": [
+        {
+          "line_no": 1,
+          "op_code": "EL22",
+          "description": "Replaced alternator, tested charging system",
+          "labour_hours": 2.4
+        }
+      ]
+    },
+    {
+      "ro_id": "DMS-4406",
+      "vin": "1N4BL4BV4NC108455",
+      "opened_at": "2024-04-14T10:00:00",
+      "odometer": { "value": 28900, "uom": "KM" },
+      "dealer": { "name": "Forest City Motors", "city": "London", "province": "ON" },
+      "pay_type": "customer",
+      "lines": [
+        {
+          "line_no": 1,
+          "op_code": "MISC",
+          "description": "",
+          "labour_hours": 1.0
+        }
+      ]
+    },
+    {
+      "ro_id": "DMS-4407",
+      "vin": "2HKRW2H86NH512044",
+      "opened_at": "2025-05-21T09:15:00",
+      "odometer": { "value": 31060, "uom": "KM" },
+      "dealer": { "name": "Forest City Motors", "city": "London", "province": "ON" },
+      "pay_type": "customer",
+      "lines": [
+        {
+          "line_no": 1,
+          "op_code": "BR41",
+          "description": "Front brake pad and rotor replacement",
+          "labour_hours": 1.9
+        }
+      ]
+    },
+    {
+      "ro_id": "DMS-4408",
+      "vin": "WBA5R1C54KA018732",
+      "opened_at": "pending",
+      "odometer": { "value": 119400, "uom": "KM" },
+      "dealer": { "name": "Forest City Motors", "city": "London", "province": "ON" },
+      "pay_type": "customer",
+      "lines": [
+        {
+          "line_no": 1,
+          "op_code": "EN18",
+          "description": "Valve cover gasket leaking, replaced gasket",
+          "labour_hours": 3.2
+        }
+      ]
+    },
+    {
+      "ro_id": "DMS-4409",
+      "vin": "1FMCU9J94MUA03917",
+      "opened_at": "2025-02-03T13:40:00",
+      "odometer": { "value": 41220, "uom": "KM" },
+      "dealer": { "name": "Forest City Motors", "city": "London", "province": "ON" },
+      "pay_type": "customer",
+      "lines": [
+        {
+          "line_no": 1,
+          "op_code": "SU09",
+          "description": "Replace rear shock absorbers",
+          "labour_hours": 2.1
+        },
+        {
+          "line_no": 2,
+          "op_code": "SU15",
+          "description": "Four wheel alignment",
+          "labour_hours": 1.0
+        }
+      ]
+    },
+    {
+      "ro_id": "DMS-4410",
+      "vin": "5YJ3E1EA9KF312867",
+      "opened_at": "2025-03-18T15:25:00",
+      "odometer": { "value": 38400, "uom": "KM" },
+      "dealer": { "name": "Forest City Motors", "city": "London", "province": "ON" },
+      "pay_type": "customer",
+      "lines": [
+        {
+          "line_no": 1,
+          "op_code": "IN01",
+          "description": "Annual safety inspection",
+          "labour_hours": 0.8
+        }
+      ]
+    }
+  ]
+}
