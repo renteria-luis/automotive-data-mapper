@@ -1,0 +1,543 @@
+{
+  "meta": {
+    "api_version": "v2",
+    "generated_at": "2026-07-31T04:00:11Z",
+    "page": 1,
+    "page_size": 100,
+    "total_records": 28
+  },
+  "records": [
+    {
+      "work_order_id": "WO-2026-4100",
+      "vin": "2T1BURHE4JC021345",
+      "plate": "BXRP 887",
+      "service_date": "2018-11-23T00:00:00Z",
+      "odometer": {
+        "value": 23211,
+        "unit": "km"
+      },
+      "description": "Mount and balance 4 winter tires",
+      "vendor": {
+        "id": "V-3301",
+        "name": "NorthStar Fleet Services",
+        "city": "Windsor",
+        "region": "ON"
+      },
+      "invoice_total_cad": 120.0,
+      "cost_centre": "CC-200"
+    },
+    {
+      "work_order_id": "WO-2026-4105",
+      "vin": "2T1BURHE4JC021345",
+      "plate": "BXRP 887",
+      "service_date": "2020-05-23T00:00:00Z",
+      "odometer": {
+        "value": "44,032",
+        "unit": "km"
+      },
+      "description": "Four wheel alignment",
+      "vendor": {
+        "id": "V-3318",
+        "name": "Dominion Vehicle Care",
+        "city": "Kitchener",
+        "region": "ON"
+      },
+      "invoice_total_cad": 157.4,
+      "cost_centre": "CC-201"
+    },
+    {
+      "work_order_id": "WO-2026-4110",
+      "vin": "1HGCV1F30LA100234",
+      "plate": "CKLM 302",
+      "service_date": "2023-07-26T00:00:00Z",
+      "odometer": {
+        "value": 58686,
+        "unit": "km"
+      },
+      "description": "Timing belt and water pump service",
+      "vendor": {
+        "id": "V-3342",
+        "name": "Great Lakes Fleet Maintenance",
+        "city": "Sarnia",
+        "region": "ON"
+      },
+      "invoice_total_cad": 194.8,
+      "cost_centre": "CC-202"
+    },
+    {
+      "work_order_id": "WO-2026-4115",
+      "vin": "3vwc57bu8km052318",
+      "plate": "BTWD 119",
+      "service_date": "2020-02-20T00:00:00Z",
+      "odometer": {
+        "value": 27633,
+        "unit": "km"
+      },
+      "description": "Replace cabin air filter",
+      "vendor": {
+        "id": "V-3301",
+        "name": "NorthStar Fleet Services",
+        "city": "Windsor",
+        "region": "ON"
+      },
+      "invoice_total_cad": 232.2,
+      "cost_centre": "CC-203"
+    },
+    {
+      "work_order_id": "WO-2026-4120",
+      "vin": "1G1ZD5ST0LF004821",
+      "plate": "CMRE 640",
+      "service_date": "2022-12-22T00:00:00Z",
+      "odometer": {
+        "value": 32641,
+        "unit": "mi"
+      },
+      "description": "Replace catalytic converter and downstream O2 sensor",
+      "vendor": {
+        "id": "V-3318",
+        "name": "Dominion Vehicle Care",
+        "city": "Kitchener",
+        "region": "ON"
+      },
+      "invoice_total_cad": 269.6,
+      "cost_centre": "CC-204"
+    },
+    {
+      "work_order_id": "WO-2026-4125",
+      "vin": "1C4RJFAG8MC612907",
+      "plate": "CPNA 275",
+      "service_date": "2022-05-21T00:00:00Z",
+      "odometer": {
+        "value": 32055,
+        "unit": "km"
+      },
+      "description": "Safety Standards Certificate inspection",
+      "vendor": {
+        "id": "V-3342",
+        "name": "Great Lakes Fleet Maintenance",
+        "city": "Sarnia",
+        "region": "ON"
+      },
+      "invoice_total_cad": 307.0,
+      "cost_centre": "CC-205"
+    },
+    {
+      "work_order_id": "WO-2026-4130",
+      "vin": "KNDEPCAA2M7533104",
+      "plate": "CRTY 018",
+      "service_date": "2022-01-02T00:00:00Z",
+      "odometer": {
+        "value": null,
+        "unit": "km"
+      },
+      "description": "Brake fluid flush",
+      "vendor": {
+        "id": "V-3301",
+        "name": "NorthStar Fleet Services",
+        "city": "Windsor",
+        "region": "ON"
+      },
+      "invoice_total_cad": 344.4,
+      "cost_centre": "CC-206"
+    },
+    {
+      "work_order_id": "WO-2026-4135",
+      "vin": "KNDEPCAA2M7533104",
+      "plate": "CRTY 018",
+      "service_date": "2023-11-10T00:00:00Z",
+      "odometer": {
+        "value": 58197,
+        "unit": "km"
+      },
+      "description": "No start diagnosis, parasitic draw test",
+      "vendor": {
+        "id": "V-3318",
+        "name": "Dominion Vehicle Care",
+        "city": "Kitchener",
+        "region": "ON"
+      },
+      "invoice_total_cad": 381.8,
+      "cost_centre": "CC-207"
+    },
+    {
+      "work_order_id": "WO-2026-4140",
+      "vin": "1N4BL4BV4NC108455",
+      "plate": "CTWF 506",
+      "service_date": "2023-04-01T00:00:00Z",
+      "odometer": {
+        "value": 38688,
+        "unit": "km"
+      },
+      "description": "Replace front brake pads and machine rotors",
+      "vendor": {
+        "id": "V-3342",
+        "name": "Great Lakes Fleet Maintenance",
+        "city": "Sarnia",
+        "region": "ON"
+      },
+      "invoice_total_cad": 419.2,
+      "cost_centre": "CC-208"
+    },
+    {
+      "work_order_id": "WO-2026-4145",
+      "vin": "1N4BL4BV4NC108455",
+      "plate": "CTWF 506",
+      "service_date": "2026-02-30T00:00:00Z",
+      "odometer": {
+        "value": 63863,
+        "unit": "km"
+      },
+      "description": "Mount and balance 4 winter tires",
+      "vendor": {
+        "id": "V-3301",
+        "name": "NorthStar Fleet Services",
+        "city": "Windsor",
+        "region": "ON"
+      },
+      "invoice_total_cad": 456.6,
+      "cost_centre": "CC-209"
+    },
+    {
+      "work_order_id": "WO-2026-4150",
+      "vin": "1FMCU9J94MUA03917",
+      "plate": "CQHJ 158",
+      "service_date": "2022-06-29T00:00:00Z",
+      "odometer": {
+        "value": 26787,
+        "unit": "mi"
+      },
+      "description": "Alternator replacement",
+      "vendor": {
+        "id": "V-3318",
+        "name": "Dominion Vehicle Care",
+        "city": "Kitchener",
+        "region": "ON"
+      },
+      "invoice_total_cad": 494.0,
+      "cost_centre": "CC-210"
+    },
+    {
+      "work_order_id": "WO-2026-4155",
+      "vin": "1FMCU9J94MUA03917",
+      "plate": "CQHJ 158",
+      "service_date": "2024-01-21T00:00:00Z",
+      "odometer": {
+        "value": "69,529",
+        "unit": "km"
+      },
+      "description": "Timing belt and water pump service",
+      "vendor": {
+        "id": "V-3342",
+        "name": "Great Lakes Fleet Maintenance",
+        "city": "Sarnia",
+        "region": "ON"
+      },
+      "invoice_total_cad": 531.4,
+      "cost_centre": "CC-211"
+    },
+    {
+      "work_order_id": "WO-2026-4160",
+      "vin": "5YJ3E1EA9KF312876",
+      "plate": "BVYK 720",
+      "service_date": "2022-12-21T00:00:00Z",
+      "odometer": {
+        "value": 86982,
+        "unit": "km"
+      },
+      "description": "Transmission fluid and filter service",
+      "vendor": {
+        "id": "V-3301",
+        "name": "NorthStar Fleet Services",
+        "city": "Windsor",
+        "region": "ON"
+      },
+      "invoice_total_cad": 568.8,
+      "cost_centre": "CC-200"
+    },
+    {
+      "work_order_id": "WO-2026-4165",
+      "vin": "1GCUYDED4LZ204118",
+      "plate": "CNLQ 385",
+      "service_date": "2021-03-27T00:00:00Z",
+      "odometer": {
+        "value": null,
+        "unit": "km"
+      },
+      "description": "Replace catalytic converter and downstream O2 sensor",
+      "vendor": {
+        "id": "V-3318",
+        "name": "Dominion Vehicle Care",
+        "city": "Kitchener",
+        "region": "ON"
+      },
+      "invoice_total_cad": 606.2,
+      "cost_centre": "CC-201"
+    },
+    {
+      "work_order_id": "WO-2026-4170",
+      "vin": "3FA6P0H76KR118246",
+      "plate": "BWZM 604",
+      "service_date": "2021-07-22T00:00:00Z",
+      "odometer": {
+        "value": 78028,
+        "unit": "km"
+      },
+      "description": "Replace driver side mirror glass",
+      "vendor": {
+        "id": "V-3342",
+        "name": "Great Lakes Fleet Maintenance",
+        "city": "Sarnia",
+        "region": "ON"
+      },
+      "invoice_total_cad": 643.6,
+      "cost_centre": "CC-202"
+    },
+    {
+      "work_order_id": "WO-2026-4175",
+      "vin": "2C4RC1BG3LR251037",
+      "plate": "CDPS 217",
+      "service_date": "2021-06-24T00:00:00Z",
+      "odometer": {
+        "value": 51954,
+        "unit": "km"
+      },
+      "description": "Brake fluid flush",
+      "vendor": {
+        "id": "V-3301",
+        "name": "NorthStar Fleet Services",
+        "city": "Windsor",
+        "region": "ON"
+      },
+      "invoice_total_cad": 681.0,
+      "cost_centre": "CC-203"
+    },
+    {
+      "work_order_id": "WO-2026-4180",
+      "vin": "1N4AZ1CP3KC310482",
+      "plate": "BYAN 852",
+      "service_date": "2020-08-06T00:00:00Z",
+      "odometer": {
+        "value": "33,656",
+        "unit": "mi"
+      },
+      "description": null,
+      "vendor": {
+        "id": "V-3318",
+        "name": "Dominion Vehicle Care",
+        "city": "Kitchener",
+        "region": "ON"
+      },
+      "invoice_total_cad": 718.4,
+      "cost_centre": "CC-204"
+    },
+    {
+      "work_order_id": "WO-2026-4185",
+      "vin": "1N4AZ1CP3KC310482",
+      "plate": "BYAN 852",
+      "service_date": "2021-12-10T00:00:00Z",
+      "odometer": {
+        "value": 83694,
+        "unit": "km"
+      },
+      "description": "Replace front brake pads and machine rotors",
+      "vendor": {
+        "id": "V-3342",
+        "name": "Great Lakes Fleet Maintenance",
+        "city": "Sarnia",
+        "region": "ON"
+      },
+      "invoice_total_cad": 755.8,
+      "cost_centre": "CC-205"
+    },
+    {
+      "work_order_id": "WO-2026-4190",
+      "vin": "5NPE24AF4KH745219",
+      "plate": "BZCP 176",
+      "service_date": "2020-04-08T00:00:00Z",
+      "odometer": {
+        "value": 58587,
+        "unit": "km"
+      },
+      "description": "Replace front struts and mounts",
+      "vendor": {
+        "id": "V-3301",
+        "name": "NorthStar Fleet Services",
+        "city": "Windsor",
+        "region": "ON"
+      },
+      "invoice_total_cad": 793.2,
+      "cost_centre": "CC-206"
+    },
+    {
+      "work_order_id": "WO-2026-4195",
+      "vin": "5NPE24AF4KH745219",
+      "plate": "BZCP 176",
+      "service_date": "2021-10-03T00:00:00Z",
+      "odometer": {
+        "value": 89360,
+        "unit": "km"
+      },
+      "description": "Alternator replacement",
+      "vendor": {
+        "id": "V-3318",
+        "name": "Dominion Vehicle Care",
+        "city": "Kitchener",
+        "region": "ON"
+      },
+      "invoice_total_cad": 830.6,
+      "cost_centre": "CC-207"
+    },
+    {
+      "work_order_id": "WO-2026-4200",
+      "vin": "2GNAXHEV9L6208934",
+      "plate": "CEDT 908",
+      "service_date": "2022-06-13T00:00:00Z",
+      "odometer": {
+        "value": 92193,
+        "unit": "km"
+      },
+      "description": "Coolant flush and fill",
+      "vendor": {
+        "id": "V-3342",
+        "name": "Great Lakes Fleet Maintenance",
+        "city": "Sarnia",
+        "region": "ON"
+      },
+      "invoice_total_cad": 868.0,
+      "cost_centre": "CC-208"
+    },
+    {
+      "work_order_id": "WO-2026-4205",
+      "vin": "WVWAA7AU1MW031756",
+      "plate": "CVEU 263",
+      "service_date": "2022-10-05T00:00:00Z",
+      "odometer": {
+        "value": 994120,
+        "unit": "km"
+      },
+      "description": "Transmission fluid and filter service",
+      "vendor": {
+        "id": "V-3301",
+        "name": "NorthStar Fleet Services",
+        "city": "Windsor",
+        "region": "ON"
+      },
+      "invoice_total_cad": 905.4,
+      "cost_centre": "CC-209"
+    },
+    {
+      "work_order_id": "WO-2026-4210",
+      "vin": "1FA6P8TH2J5142608",
+      "plate": "BFGV 731",
+      "service_date": "2020-10-11T00:00:00Z",
+      "odometer": {
+        "value": 60806,
+        "unit": "mi"
+      },
+      "description": "Check engine light diagnosis, scan and road test",
+      "vendor": {
+        "id": "V-3318",
+        "name": "Dominion Vehicle Care",
+        "city": "Kitchener",
+        "region": "ON"
+      },
+      "invoice_total_cad": 942.8,
+      "cost_centre": "CC-210"
+    },
+    {
+      "work_order_id": "WO-2026-4215",
+      "vin": "1FA6P8TH2J5142608",
+      "plate": "BFGV 731",
+      "service_date": "2022-06-02T00:00:00Z",
+      "odometer": {
+        "value": 133430,
+        "unit": "km"
+      },
+      "description": "Replace driver side mirror glass",
+      "vendor": {
+        "id": "V-3342",
+        "name": "Great Lakes Fleet Maintenance",
+        "city": "Sarnia",
+        "region": "ON"
+      },
+      "invoice_total_cad": 980.2,
+      "cost_centre": "CC-211"
+    },
+    {
+      "work_order_id": "WO-2026-4220",
+      "vin": "KM8J3CAL8LU115427",
+      "plate": "CFJX 042",
+      "service_date": "2022-03-07T00:00:00Z",
+      "odometer": {
+        "value": 86217,
+        "unit": "km"
+      },
+      "description": "Repair puncture RR tire",
+      "vendor": {
+        "id": "V-3301",
+        "name": "NorthStar Fleet Services",
+        "city": "Windsor",
+        "region": "ON"
+      },
+      "invoice_total_cad": 1017.6,
+      "cost_centre": "CC-200"
+    },
+    {
+      "work_order_id": "WO-2026-4225",
+      "vin": "KM8J3CAL8LU115427",
+      "plate": "CFJX 042",
+      "service_date": "2023-09-15T00:00:00Z",
+      "odometer": {
+        "value": 121566,
+        "unit": "km"
+      },
+      "description": "Replace rear brake calipers, seized",
+      "vendor": {
+        "id": "V-3318",
+        "name": "Dominion Vehicle Care",
+        "city": "Kitchener",
+        "region": "ON"
+      },
+      "invoice_total_cad": 1055.0,
+      "cost_centre": "CC-201"
+    },
+    {
+      "work_order_id": "WO-2026-4235",
+      "vin": "KNDEPCAA2M7533104",
+      "plate": "CRTY 018",
+      "service_date": "2022-11-13T00:00:00Z",
+      "odometer": {
+        "value": 45865,
+        "unit": "km"
+      },
+      "description": "Differential fluid change front and rear",
+      "vendor": {
+        "id": "V-3301",
+        "name": "NorthStar Fleet Services",
+        "city": "Windsor",
+        "region": "ON"
+      },
+      "invoice_total_cad": 688.4,
+      "cost_centre": "CC-204"
+    },
+    {
+      "work_order_id": "WO-2026-4240",
+      "vin": "1HGCV1F30LA100234",
+      "plate": "CKLM 302",
+      "service_date": "2025-02-05T00:00:00Z",
+      "odometer": {
+        "value": 46740,
+        "unit": "km"
+      },
+      "description": "Oil and filter change, multi point inspection",
+      "vendor": {
+        "id": "V-3318",
+        "name": "Dominion Vehicle Care",
+        "city": "Kitchener",
+        "region": "ON"
+      },
+      "invoice_total_cad": 134.75,
+      "cost_centre": "CC-207"
+    }
+  ]
+}

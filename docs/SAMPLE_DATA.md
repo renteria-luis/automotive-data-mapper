@@ -1,111 +1,132 @@
 # Sample data
 
-The three feeds in `data/raw/` hold 50 service events across 12 vehicles. They are synthetic and
-written by hand, which means every value in them was chosen. This file is the list of what was
-chosen to be wrong.
+Three feeds, 97 records, 24 vehicles. They are fixtures written for this project, but the formats
+are not invented: each one follows a specification that a real automotive data feed uses, and the
+sources are listed below so any claim about them can be checked.
 
-It exists so that detection can be measured. Knowing that 11 records are unmappable, and which
-ones, turns "the pipeline rejected 11 records" into "the pipeline found 11 of the 11 problems that
-are there", which is a different claim.
+Every defect in the files was placed on purpose. This document is the list. It exists so detection
+can be measured: knowing that 10 records are unmappable, and which ones, turns "the pipeline
+rejected 10 records" into "the pipeline found 10 of the 10 problems that are there".
 
-## The vehicles
+## Where the formats come from
 
-Twelve VINs, each with a correct ISO 3779 check digit. The first three characters are a real
-manufacturer prefix and position 10 is the model year code, so a decoding service resolves the
-manufacturer and the year. The middle section is invented, so the model it reports may not match
-anything real.
+| Feed | Format | Modelled on | Where to look |
+|---|---|---|---|
+| `shop_a` | CSV | The column names and their meaning come from the CARFAX Service Data Transfer file that a shop management system uploads | [amattu2/CARFAX-Wrapper](https://github.com/amattu2/CARFAX-Wrapper), `src/FTP.php`, the `HEADER_FIELDS` constant around line 54 for the 24 column names |
+| `dealer_b` | XML | The STAR RepairOrder schema used for dealer management system exchange | [STAR 5.3.4 schema documentation](https://schemas.liquid-technologies.com/STAR/5.3.4/repairorder_xsd.html) for the element names, and [ProcessRepairOrder.xsd](https://schemas.liquid-technologies.com/STAR/5.3.4/processrepairorder_xsd.html) for the document wrapper |
+| `fleet_c` | JSON | A REST export from a fleet maintenance aggregator: envelope with paging metadata, nested vendor, ISO 8601 timestamps | No public specification. This one is a reasonable modern API shape, not a standard |
 
-| VIN | Manufacturer prefix | Model year |
-|---|---|---|
-| `1FTFW1E50KFA12345` | 1FT, Ford, trucks, United States | 2019 |
-| `2T1BURHE4JC021345` | 2T1, Toyota, Canada | 2018 |
-| `1HGCV1F30LA100234` | 1HG, Honda, United States | 2020 |
-| `3VWC57BU8KM052318` | 3VW, Volkswagen, Mexico | 2019 |
-| `1G1ZD5ST0LF004821` | 1G1, Chevrolet, United States | 2020 |
-| `1C4RJFAG8MC612907` | 1C4, Chrysler group, United States | 2021 |
-| `KNDEPCAA2M7533104` | KND, Kia, South Korea | 2021 |
-| `2HKRW2H86NH512044` | 2HK, Honda, Canada | 2022 |
-| `1N4BL4BV4NC108455` | 1N4, Nissan, United States | 2022 |
-| `WBA5R1C54KA018732` | WBA, BMW, Germany | 2019 |
-| `1FMCU9J94MUA03917` | 1FM, Ford, multipurpose, United States | 2021 |
-| `5YJ3E1EA9KF312876` | 5YJ, Tesla, United States | 2019 |
+Two honest notes about `dealer_b`. The element names taken from the published schema documentation
+are `DealerParty`, `ServiceAdvisorParty`, `LocationID`, `Vehicle`, `LicenseNumberString`,
+`InDistanceMeasure`, `OutDistanceMeasure`, `RepairOrderOpenedDate`, `RepairOrderCompletedDate`,
+`Job`, `LaborActualHoursNumeric`, `RepairOrderStatus`, `DepartmentType` and
+`SecondaryReferenceNumberString`. The names inside `Job`, such as `CustomerConcernDescription` and
+`CorrectionDescription`, are chosen here and not verified against the schema. And the file is
+modelled on STAR, it is not a schema valid STAR document.
+
+## The three feeds
+
+### `shop_a`, independent repair shop
+
+`data/raw/shop_a/service_records_20260731.csv`, 42 data rows.
+
+The 24 columns are the ones a shop management system sends to CARFAX. The real transfer file is
+pipe delimited; this fixture is comma delimited CSV, which is one of the three formats the project
+handles and which brings its own problem: `21,000` and `Lube oil and filter, 5W30 synthetic` both
+contain commas, so they are quoted, and a reader that splits on commas instead of parsing CSV
+shifts every column after them.
+
+Dates are `MM/DD/YYYY`. `ODOMETER_MEASURE` says whether `MILEAGE` is in `MI` or `KM`, which is the
+reason a service feed cannot assume a unit. The shop runs Protractor and reports mostly in
+kilometres, but a handful of rows come through in miles.
+
+### `dealer_b`, dealership management system
+
+`data/raw/dealer_b/ProcessRepairOrder_20260731.xml`, 22 repair orders holding 27 jobs.
+
+The document has a default XML namespace, so `findall("RepairOrder")` finds nothing until the
+namespace is handled. Odometer readings are `InDistanceMeasure` and `OutDistanceMeasure` with a
+`unitCode` attribute: `KMT` for kilometres, `SMI` for statute miles. Each `Job` inside a repair
+order is one service event, so one order can produce three.
+
+Each job carries two free text fields: what the customer said and what the technician did.
+`CustomerConcernDescription` reads "Grinding noise when braking", `CorrectionDescription` reads
+"R&R rear brake pads, resurface rotors". Deciding which one describes the service is a mapping
+decision, and it has to be written down.
+
+### `fleet_c`, fleet maintenance aggregator
+
+`data/raw/fleet_c/maintenance_events_2026-07.json`, 28 records.
+
+An envelope with a `meta` block and a `records` array. Timestamps are ISO 8601 in UTC, the odometer
+is an object with `value` and `unit`, and `value` arrives sometimes as a number, sometimes as a
+string with a thousands separator, and sometimes as `null`.
 
 ## Records that cannot be mapped
 
-Eleven records, found while reading. Each one should end up in the rejected-records table with the
-code below.
+Ten records, all detectable while reading. This is about 10 percent of the file, which is what a
+feed of this kind actually looks like.
 
 | Record | Feed | What is wrong | Expected code |
 |---|---|---|---|
-| `RO-1009` | shop_a | VIN has 16 characters, the last one was dropped | `E001` |
-| `RO-1010` | shop_a | VIN carries a letter `O` where the check digit `0` belongs | `E002` |
-| `FC-7005` | fleet_c | VIN starts with the letter `I` instead of the digit `1` | `E002` |
-| `RO-1011` | shop_a | Last two characters transposed, `...345` became `...354` | `E003` |
-| `DMS-4410` | dealer_b | Last two characters transposed, `...876` became `...867` | `E003` |
-| `RO-1007` | shop_a | Empty work description | `E004` |
-| `DMS-4406` | dealer_b | Line item with an empty description | `E004` |
-| `RO-1006` | shop_a | Service date reads `n/a` | `E005` |
-| `DMS-4408` | dealer_b | Opened date reads `pending` | `E005` |
-| `FC-7006` | fleet_c | Date reads `31/31/2024`, a day and month that do not exist | `E005` |
-| `RO-1025` | shop_a | Service date is in 2027 | `E006` |
+| `184227` | shop_a | VIN truncated to 16 characters | `E001` |
+| `184209` | shop_a | VIN carries the letter `O` where the check digit belongs | `E002` |
+| `RO-100494` job 1 | dealer_b | Two adjacent VIN characters transposed | `E003` |
+| `184269` | shop_a | `SERVICE_DESCRIPTION` empty | `E004` |
+| `RO-100557` job 1 | dealer_b | Job carries neither a customer concern nor a correction | `E004` |
+| `WO-2026-4180` | fleet_c | `description` is `null` | `E004` |
+| `184278` | shop_a | `RO_OPEN_DATE` is `00/00/0000` | `E005` |
+| `WO-2026-4145` | fleet_c | `service_date` is 30 February | `E005` |
+| `RO-100536` job 1 | dealer_b | Repair order opened in 2027 | `E006` |
+| `184302` | shop_a | The same row submitted twice, an integration retry | `E009` |
 
-The two transpositions are the reason the check digit is worth implementing. Both VINs are 17
-characters long and use only legal characters, so length and character checks accept them. Only the
-checksum catches them.
+The transposed VIN is the one that matters. It is 17 characters long and uses only legal
+characters, so a length check and a character check both accept it. Only the ISO 3779 check digit
+catches it.
 
-## Problems found after every feed is read
+## Problems that only appear once every feed is read
 
-These records map cleanly. They only look wrong next to the rest of the data, so they cannot be
-caught while reading a single row.
+| Records | What is wrong | Expected code |
+|---|---|---|
+| `WO-2026-4240` against `184215` | The fleet provider reports 46,740 km in February 2025 on a vehicle that showed 71,240 km at the shop a year earlier | `E007` |
+| `WO-2026-4205` | 994,120 km on a 2021 Golf | `E008` |
+| `WO-2026-4235` and `184233` | Same vehicle, same day, same repair, worded differently by the shop and by the fleet provider | `E009` |
 
-| Record | Feed | What is wrong | Expected code |
-|---|---|---|---|
-| `RO-1013` | shop_a | 39,000 miles in March 2024, after 52,880 miles in July 2023 on the same vehicle | `E007` |
-| `RO-1015` | shop_a | 998,000 miles, roughly 1.6 million kilometres | `E008` |
-| `RO-1024` and `DMS-4407` | shop_a, dealer_b | Same vehicle, same day, same brake job, worded differently, 31,060 km in both | `E009` |
-| `RO-1026` and `FC-7012` | shop_a, fleet_c | Same vehicle, same day, same bumper replacement, 122,632 km against 122,600 km | `E009` |
-
-The rollback only shows up after the miles are converted to kilometres, and the two duplicate pairs
-only show up after both feeds are read and the units are the same. Neither is visible in one file.
-
-## Source fields with no canonical target
-
-Not broken records, but data that goes nowhere. Reporting them as `E010` is what makes the gap
-visible instead of silent.
-
-| Feed | Fields |
-|---|---|
-| shop_a | `TechnicianID`, `InvoiceTotal` |
-| dealer_b | `export_version`, `source_system`, `pay_type`, `op_code`, `labour_hours` |
-| fleet_c | `MaintenanceExport/@provider`, `MaintenanceExport/@version`, `Event/@cost` |
+There is a fourth case worth noticing, and it is the most instructive one. Because
+`WO-2026-4205` reports 994,120 km, the next genuine reading on that vehicle looks like a rollback.
+A pipeline that flags symptoms will report two problems where there is one. Fixing the implausible
+reading makes the false rollback disappear, and that ordering is the point.
 
 ## Values that are messy but valid
 
-These must be normalized, not rejected. A pipeline that rejects them is as wrong as one that
+These have to be normalized, not rejected. A pipeline that rejects them is as wrong as one that
 accepts a broken VIN.
 
 | Case | Where | What has to happen |
 |---|---|---|
-| Second date format `22-Aug-23` | `RO-1004` | Parse it as well as `MM/DD/YYYY` |
-| Day-first dates | every fleet_c record | `07/06/2024` is 7 June, not 6 July |
-| Lowercase VIN | `DMS-4405` | Uppercase it before validating |
-| Leading and trailing spaces in the description | `RO-1026` | Strip them |
-| Odometer in miles | all of shop_a, plus `FC-7003` and `FC-7008` | Convert to kilometres and keep the original unit |
-| Odometer missing | `RO-1005`, `DMS-4404`, `FC-7007` | Keep the record, leave the field empty. The odometer is optional, so a missing reading is an incomplete record and not a rejected one |
-| Shop name typed four ways | shop_a | `Riverside Auto Repair`, `RIVERSIDE AUTO REPAIR`, `Riverside Auto Repair Inc.` and `riverside auto repair` are one business |
-| Dealer name typed three ways | dealer_b | `Forest City Motors`, `FOREST CITY MOTORS` and `Forest City Motors Ltd` are one business |
-| One repair order, several line items | `DMS-4402`, `DMS-4409` | Each line item is its own event |
-| Description in capitals | `RO-1008` | Lowercase it in the normalized field, keep the original |
+| Odometer in miles | Lines with `ODOMETER_MEASURE` of `MI`, and `unitCode="SMI"` in the XML, and `"unit": "mi"` in the JSON | Convert to kilometres and keep the unit the source reported |
+| Odometer with a thousands separator | shop_a `MILEAGE` such as `21,000`, quoted because of the comma, and fleet_c `"value": "44,032"` | Strip the separator before converting to a number |
+| Odometer blank or zero | `184242` blank, `184251` zero, `WO-2026-4130` and `WO-2026-4165` null | Keep the record with an empty odometer. A missing reading makes a record incomplete, not invalid |
+| Lowercase VIN | One fleet_c record | Uppercase before validating |
+| Trailing spaces in the description | Several shop_a rows | Strip |
+| Shop name typed three ways | `Riverside Auto Service`, `RIVERSIDE AUTO SERVICE`, `Riverside Auto Service Ltd` | One business, one standardized name |
+| Dealer name typed three ways | `Forest City Motors`, `FOREST CITY MOTORS`, `Forest City Motors Ltd` | Same |
+| Plate and province blank | Several shop_a rows | Optional fields, leave empty |
+| `MODEL_YEAR` blank | `184290`, `184308` | Optional, and the model year is also recoverable from position 10 of the VIN |
+| Repair order still open | `184260` has no `RO_CLOSE_DATE` | Use the open date, and record that the close date was missing |
+| XML namespace | Every element in dealer_b | Handle the namespace or find nothing at all |
+| One order, several jobs | Several dealer_b orders | Each job is its own event |
 
 ## Totals
 
 | | Count |
 |---|---|
-| Records across the three feeds | 50 |
-| shop_a rows | 26 |
-| dealer_b line items | 12, inside 10 repair orders |
-| fleet_c events | 12 |
-| Vehicles | 12 |
-| Rejected while reading | 11 |
-| Records that map to the canonical schema | 39 |
-| Of those, flagged by the checks that need the whole dataset | 4, being 2 duplicate pairs, 1 rollback and 1 implausible reading |
+| Records across the three feeds | 97 |
+| shop_a rows | 42 |
+| dealer_b jobs, inside 22 repair orders | 27 |
+| fleet_c records | 28 |
+| Vehicles | 24, all with a correct ISO 3779 check digit |
+| Rejected while reading | 10 |
+| Mapped to the canonical schema | 87 |
+| Of those, flagged by the checks that need every feed | 3, being 1 rollback, 1 implausible reading and 1 cross feed duplicate |
+| Mapped but incomplete, with no odometer | 4 |

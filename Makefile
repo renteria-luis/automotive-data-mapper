@@ -1,4 +1,4 @@
-.PHONY: install lint format test check notebook
+.PHONY: install lint format test check kernel
 
 # Create the virtual environment and install the project in editable mode, so
 # that a notebook can import from src/ without any path juggling.
@@ -21,5 +21,7 @@ test:
 
 check: lint test
 
-notebook:
-	jupyter lab
+# Register this virtual environment as a Jupyter kernel, so a notebook opened
+# from any JupyterLab can run with the project's Python and import from src/.
+kernel:
+	.venv/bin/python -m ipykernel install --user --name automotive-data-mapper --display-name "Python (automotive-data-mapper)"

@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessRepairOrder xmlns="http://www.starstandard.org/STAR/5" versionID="5.3.4" systemEnvironmentCode="Production">
+  <ApplicationArea>
+    <Sender>
+      <CreatorNameCode>DEALERTRACK</CreatorNameCode>
+      <SenderNameCode>FCM-LONDON</SenderNameCode>
+      <DealerNumberID>ON41127</DealerNumberID>
+    </Sender>
+    <CreationDateTime>2026-07-31T23:14:07-04:00</CreationDateTime>
+    <BODID>a41f0c92-6b19-4d0e-9d2a-7c1f55a0b331</BODID>
+  </ApplicationArea>
+  <ProcessRepairOrderDataArea>
+    <Process/>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100480</DocumentID>
+        <SecondaryReferenceNumberString>RO-100480-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>K. Whitfield</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2021-03-14T08:20:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2021-03-14T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>1FTFW1E50KFA12345</VehicleID>
+          <ModelYear>2019</ModelYear>
+          <MakeString>Ford</MakeString>
+          <ModelString>F-150</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CJKT 421</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">41199</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">41202</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>BRK41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Grinding noise when braking</CustomerConcernDescription>
+          <CorrectionDescription>R&amp;R rear brake pads, resurface rotors</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100487</DocumentID>
+        <SecondaryReferenceNumberString>RO-100487-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>FOREST CITY MOTORS</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>M. Dorsey</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2021-05-02T08:21:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2021-05-03T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>2T1BURHE4JC021345</VehicleID>
+          <ModelYear>2018</ModelYear>
+          <MakeString>Toyota</MakeString>
+          <ModelString>Corolla</ModelString>
+        </Vehicle>
+        <LicenseNumberString>BXRP 887</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">55542</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">55545</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>SUS41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Vehicle pulls to the right</CustomerConcernDescription>
+          <CorrectionDescription>Replace front struts and mounts</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100494</DocumentID>
+        <SecondaryReferenceNumberString>RO-100494-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors Ltd</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>A. Nguyen</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2022-08-03T08:22:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2022-08-05T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>1HGCV1F30LA100324</VehicleID>
+          <ModelYear>2020</ModelYear>
+          <MakeString>Honda</MakeString>
+          <ModelString>Accord</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CKLM 302</LicenseNumberString>
+        <InDistanceMeasure unitCode="SMI">29120</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="SMI">29123</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>ENG41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Engine light on, rough running</CustomerConcernDescription>
+          <CorrectionDescription>Replace spark plugs and coil on cyl 3</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100501</DocumentID>
+        <SecondaryReferenceNumberString>RO-100501-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>R. Boucher</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2020-11-22T08:23:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2020-11-22T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>3VWC57BU8KM052318</VehicleID>
+          <ModelYear>2019</ModelYear>
+          <MakeString>Volkswagen</MakeString>
+          <ModelString>Jetta</ModelString>
+        </Vehicle>
+        <LicenseNumberString>BTWD 119</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">38299</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">38302</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>COO41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Temperature gauge reading high</CustomerConcernDescription>
+          <CorrectionDescription>Coolant flush and fill</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100508</DocumentID>
+        <SecondaryReferenceNumberString>RO-100508-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>FOREST CITY MOTORS</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>K. Whitfield</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2022-01-20T08:24:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2022-01-21T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>1G1ZD5ST0LF004821</VehicleID>
+          <ModelYear>2020</ModelYear>
+          <MakeString>Chevrolet</MakeString>
+          <ModelString>Malibu</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CMRE 640</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">40821</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">40824</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>TRN41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Shifting is rough between gears</CustomerConcernDescription>
+          <CorrectionDescription>Replace front CV axle, driver side</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100515</DocumentID>
+        <SecondaryReferenceNumberString>RO-100515-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors Ltd</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>M. Dorsey</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2023-03-19T08:25:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>1C4RJFAG8MC612907</VehicleID>
+          <ModelYear>2021</ModelYear>
+          <MakeString>Jeep</MakeString>
+          <ModelString>Grand Cherokee</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CPNA 275</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">43343</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">43346</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>INS41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Needs safety for registration</CustomerConcernDescription>
+          <CorrectionDescription>Check engine light diagnosis, scan and road test</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+        <Job>
+          <JobID>2</JobID>
+          <ServiceLaborOperationCode>REC42</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Received recall letter in the mail</CustomerConcernDescription>
+          <CorrectionDescription>Recall 21V-123 airbag inflator replacement</CorrectionDescription>
+          <LaborActualHoursNumeric>1.8</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100522</DocumentID>
+        <SecondaryReferenceNumberString>RO-100522-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>A. Nguyen</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2023-02-15T08:26:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2023-02-15T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>2HKRW2H86NH512044</VehicleID>
+          <ModelYear>2022</ModelYear>
+          <MakeString>Honda</MakeString>
+          <ModelString>Cr-V</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CSVB 933</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">36477</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">36480</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>TIR41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Requests winter tire changeover</CustomerConcernDescription>
+          <CorrectionDescription>Repair puncture RR tire</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+        <Job>
+          <JobID>2</JobID>
+          <ServiceLaborOperationCode>LOF42</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Customer requests oil change</CustomerConcernDescription>
+          <CorrectionDescription>Lube oil and filter, 5W30 synthetic</CorrectionDescription>
+          <LaborActualHoursNumeric>1.8</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100529</DocumentID>
+        <SecondaryReferenceNumberString>RO-100529-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>FOREST CITY MOTORS</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>R. Boucher</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2025-11-10T08:27:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2025-11-11T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>1N4BL4BV4NC108455</VehicleID>
+          <ModelYear>2022</ModelYear>
+          <MakeString>Nissan</MakeString>
+          <ModelString>Altima</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CTWF 506</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">77550</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">77553</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>TIR41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Requests winter tire changeover</CustomerConcernDescription>
+          <CorrectionDescription>Rotate tires, adjust pressures</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100536</DocumentID>
+        <SecondaryReferenceNumberString>RO-100536-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors Ltd</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>K. Whitfield</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2027-11-10T08:28:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2021-11-12T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>WBA5R1C54KA018732</VehicleID>
+          <ModelYear>2019</ModelYear>
+          <MakeString>Bmw</MakeString>
+          <ModelString>330I</ModelString>
+        </Vehicle>
+        <LicenseNumberString>BUXG 441</LicenseNumberString>
+        <InDistanceMeasure unitCode="SMI">41442</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="SMI">41445</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>ELE41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Car would not start this morning</CustomerConcernDescription>
+          <CorrectionDescription>Replace battery, clean terminals, test charging system</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100543</DocumentID>
+        <SecondaryReferenceNumberString>RO-100543-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>M. Dorsey</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2024-09-28T08:29:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2024-09-28T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>1FMCU9J94MUA03917</VehicleID>
+          <ModelYear>2021</ModelYear>
+          <MakeString>Ford</MakeString>
+          <ModelString>Escape</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CQHJ 158</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">83838</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">83841</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>HVA41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>A/C not blowing cold</CustomerConcernDescription>
+          <CorrectionDescription>A/C performance test, evac and recharge</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100550</DocumentID>
+        <SecondaryReferenceNumberString>RO-100550-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>FOREST CITY MOTORS</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>A. Nguyen</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2022-04-01T08:30:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2022-04-02T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>5YJ3E1EA9KF312876</VehicleID>
+          <ModelYear>2019</ModelYear>
+          <MakeString>Tesla</MakeString>
+          <ModelString>Model 3</ModelString>
+        </Vehicle>
+        <LicenseNumberString>BVYK 720</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">72362</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">72365</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>COO41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Temperature gauge reading high</CustomerConcernDescription>
+          <CorrectionDescription>Replace thermostat and upper rad hose</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100557</DocumentID>
+        <SecondaryReferenceNumberString>RO-100557-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors Ltd</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>R. Boucher</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2022-04-24T08:31:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2022-04-26T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>1GCUYDED4LZ204118</VehicleID>
+          <ModelYear>2020</ModelYear>
+          <MakeString>Chevrolet</MakeString>
+          <ModelString>Silverado</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CNLQ 385</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">60997</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">61000</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>EXH41</ServiceLaborOperationCode>
+          <CustomerConcernDescription></CustomerConcernDescription>
+          <CorrectionDescription></CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100564</DocumentID>
+        <SecondaryReferenceNumberString>RO-100564-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>K. Whitfield</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2020-11-21T08:32:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2020-11-21T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>3FA6P0H76KR118246</VehicleID>
+          <ModelYear>2019</ModelYear>
+          <MakeString>Ford</MakeString>
+          <ModelString>Fusion</ModelString>
+        </Vehicle>
+        <LicenseNumberString>BWZM 604</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">63519</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">63522</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>BOD41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Rock chip spread across windshield</CustomerConcernDescription>
+          <CorrectionDescription>Replace windshield, recalibrate camera</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100571</DocumentID>
+        <SecondaryReferenceNumberString>RO-100571-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>FOREST CITY MOTORS</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>M. Dorsey</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2022-01-19T08:33:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2022-01-20T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>2C4RC1BG3LR251037</VehicleID>
+          <ModelYear>2020</ModelYear>
+          <MakeString>Chrysler</MakeString>
+          <ModelString>Pacifica</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CDPS 217</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">66041</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">66044</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>FLU41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Due for maintenance per schedule</CustomerConcernDescription>
+          <CorrectionDescription>Differential fluid change front and rear</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+        <Job>
+          <JobID>2</JobID>
+          <ServiceLaborOperationCode>ENG42</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Engine light on, rough running</CustomerConcernDescription>
+          <CorrectionDescription>Replace valve cover gasket, oil leak</CorrectionDescription>
+          <LaborActualHoursNumeric>1.8</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100578</DocumentID>
+        <SecondaryReferenceNumberString>RO-100578-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors Ltd</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>A. Nguyen</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2023-09-21T08:34:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2023-09-23T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>JM3KFBCM5N0512773</VehicleID>
+          <ModelYear>2022</ModelYear>
+          <MakeString>Mazda</MakeString>
+          <ModelString>Cx-5</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CUBR 349</LicenseNumberString>
+        <InDistanceMeasure unitCode="SMI">35030</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="SMI">35033</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>BRK41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Grinding noise when braking</CustomerConcernDescription>
+          <CorrectionDescription>R&amp;R rear brake pads, resurface rotors</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+        <Job>
+          <JobID>2</JobID>
+          <ServiceLaborOperationCode>SUS42</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Vehicle pulls to the right</CustomerConcernDescription>
+          <CorrectionDescription>Four wheel alignment</CorrectionDescription>
+          <LaborActualHoursNumeric>1.8</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100585</DocumentID>
+        <SecondaryReferenceNumberString>RO-100585-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>R. Boucher</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2022-09-10T08:35:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2022-09-10T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>5NPE24AF4KH745219</VehicleID>
+          <ModelYear>2019</ModelYear>
+          <MakeString>Hyundai</MakeString>
+          <ModelString>Sonata</ModelString>
+        </Vehicle>
+        <LicenseNumberString>BZCP 176</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">105846</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">105849</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>ENG41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Engine light on, rough running</CustomerConcernDescription>
+          <CorrectionDescription>Replace spark plugs and coil on cyl 3</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100592</DocumentID>
+        <SecondaryReferenceNumberString>RO-100592-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>FOREST CITY MOTORS</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>K. Whitfield</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2021-08-09T08:36:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2021-08-10T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>2GNAXHEV9L6208934</VehicleID>
+          <ModelYear>2020</ModelYear>
+          <MakeString>Chevrolet</MakeString>
+          <ModelString>Equinox</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CEDT 908</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">76129</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">76132</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>HVA41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>A/C not blowing cold</CustomerConcernDescription>
+          <CorrectionDescription>Replace cabin air filter</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100599</DocumentID>
+        <SecondaryReferenceNumberString>RO-100599-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors Ltd</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>M. Dorsey</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2023-08-22T08:37:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2023-08-24T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>WVWAA7AU1MW031756</VehicleID>
+          <ModelYear>2021</ModelYear>
+          <MakeString>Volkswagen</MakeString>
+          <ModelString>Golf</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CVEU 263</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">95026</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">95029</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>TRN41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Shifting is rough between gears</CustomerConcernDescription>
+          <CorrectionDescription>Replace front CV axle, driver side</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100606</DocumentID>
+        <SecondaryReferenceNumberString>RO-100606-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>A. Nguyen</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2019-11-12T08:38:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2019-11-12T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>1FA6P8TH2J5142608</VehicleID>
+          <ModelYear>2018</ModelYear>
+          <MakeString>Ford</MakeString>
+          <ModelString>Mustang</ModelString>
+        </Vehicle>
+        <LicenseNumberString>BFGV 731</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">81173</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">81176</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>INS41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Needs safety for registration</CustomerConcernDescription>
+          <CorrectionDescription>Safety Standards Certificate inspection</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100613</DocumentID>
+        <SecondaryReferenceNumberString>RO-100613-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>FOREST CITY MOTORS</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>R. Boucher</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2020-03-13T08:39:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2020-03-14T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>4T1B11HK5KU823094</VehicleID>
+          <ModelYear>2019</ModelYear>
+          <MakeString>Toyota</MakeString>
+          <ModelString>Camry</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CAHW 590</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">67431</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">67434</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>REC41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Received recall letter in the mail</CustomerConcernDescription>
+          <CorrectionDescription>Recall 21V-123 airbag inflator replacement</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100620</DocumentID>
+        <SecondaryReferenceNumberString>RO-100620-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors Ltd</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>K. Whitfield</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2021-04-28T08:40:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2021-04-30T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>KM8J3CAL8LU115427</VehicleID>
+          <ModelYear>2020</ModelYear>
+          <MakeString>Hyundai</MakeString>
+          <ModelString>Tucson</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CFJX 042</LicenseNumberString>
+        <InDistanceMeasure unitCode="SMI">43273</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="SMI">43276</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>ELE41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Car would not start this morning</CustomerConcernDescription>
+          <CorrectionDescription>No start diagnosis, parasitic draw test</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+    <RepairOrder>
+      <RepairOrderHeader>
+        <DocumentID>RO-100627</DocumentID>
+        <SecondaryReferenceNumberString>RO-100627-A</SecondaryReferenceNumberString>
+        <DealerParty>
+          <PartyID>ON41127</PartyID>
+          <OrganizationName>Forest City Motors</OrganizationName>
+          <AddressLine>2280 Wharncliffe Rd S</AddressLine>
+          <CityName>London</CityName>
+          <StateOrProvinceCountrySubDivisionID>ON</StateOrProvinceCountrySubDivisionID>
+          <PostalCode>N6P 1M4</PostalCode>
+        </DealerParty>
+        <ServiceAdvisorParty><PersonName>M. Dorsey</PersonName></ServiceAdvisorParty>
+        <LocationID>FCM-SVC-01</LocationID>
+        <DepartmentType>Service</DepartmentType>
+        <RepairOrderOpenedDate>2023-06-12T08:41:00-04:00</RepairOrderOpenedDate>
+        <RepairOrderCompletedDate>2023-06-12T16:45:00-04:00</RepairOrderCompletedDate>
+        <RepairOrderStatus>Closed</RepairOrderStatus>
+      </RepairOrderHeader>
+      <RepairOrderLineItem>
+        <Vehicle>
+          <VehicleID>1G6AA5RX4N0143865</VehicleID>
+          <ModelYear>2022</ModelYear>
+          <MakeString>Cadillac</MakeString>
+          <ModelString>Ats</ModelString>
+        </Vehicle>
+        <LicenseNumberString>CWKY 617</LicenseNumberString>
+        <InDistanceMeasure unitCode="KMT">71853</InDistanceMeasure>
+        <OutDistanceMeasure unitCode="KMT">71856</OutDistanceMeasure>
+        <Job>
+          <JobID>1</JobID>
+          <ServiceLaborOperationCode>LOF41</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Customer requests oil change</CustomerConcernDescription>
+          <CorrectionDescription>Lube oil and filter, 5W30 synthetic</CorrectionDescription>
+          <LaborActualHoursNumeric>1.1</LaborActualHoursNumeric>
+        </Job>
+        <Job>
+          <JobID>2</JobID>
+          <ServiceLaborOperationCode>TIR42</ServiceLaborOperationCode>
+          <CustomerConcernDescription>Requests winter tire changeover</CustomerConcernDescription>
+          <CorrectionDescription>Mount and balance 4 winter tires</CorrectionDescription>
+          <LaborActualHoursNumeric>1.8</LaborActualHoursNumeric>
+        </Job>
+      </RepairOrderLineItem>
+    </RepairOrder>
+  </ProcessRepairOrderDataArea>
+</ProcessRepairOrder>

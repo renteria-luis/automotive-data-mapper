@@ -23,10 +23,11 @@ it cannot, with a reason for every rejection.
 ## The problem
 
 The same event, "replaced front brake pads", arrives from an independent shop as a CSV row, from a
-dealership management system as a line item inside a nested JSON repair order, and from a fleet
-provider as attributes on an XML element. Field names differ. Dates come in four formats, one of
-which is unparseable. The odometer is sometimes miles and sometimes kilometres, sometimes empty,
-and occasionally lower than the reading from the year before.
+dealership management system as a job inside a namespaced XML repair order, and from a fleet
+provider as a record in a JSON export. Field names differ. Dates come in three
+formats, one of which does not parse. The odometer is sometimes miles and sometimes kilometres,
+sometimes written with a comma, sometimes empty, and occasionally lower than the reading from the
+year before.
 
 A record that is mapped wrong is worse than a record that is missing, because nothing downstream
 knows it is wrong. So the interesting part is not the happy path. It is what happens to the
@@ -37,8 +38,8 @@ the cause can be fixed.
 
 **The MVP, which is what is being built now:**
 
-1. Read the three feeds: CSV with `csv`, nested JSON with `json`, attribute-heavy XML with
-   `xml.etree.ElementTree`.
+1. Read the three feeds: a CSV file, a namespaced XML document with `xml.etree.ElementTree`, and a
+   nested JSON export.
 2. Map every source field to the canonical schema with pandas, converting units and date formats.
 3. Validate each mapped record with Pydantic.
 4. Route what fails to a rejected-records table with a reason code and the original payload
@@ -54,11 +55,11 @@ decoding against an external API, and packaging. They are designed in [PLAN.md](
 
 | Component | Status | Where |
 |---|---|---|
-| Sample feeds in CSV, JSON and XML, with documented defects | ✅ | `data/raw/`, [docs/SAMPLE_DATA.md](docs/SAMPLE_DATA.md) |
-| Canonical schema and rejected-record model | ✅ | `src/models.py` |
+| Sample feeds in three real formats, with documented defects | ✅ | `data/raw/`, [docs/SAMPLE_DATA.md](docs/SAMPLE_DATA.md) |
+| Canonical schema and rejected-record model | 🚧 | `src/models.py` |
 | Data dictionary and source to target mapping | ✅ | [docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md) |
 | Tooling: packaging, linting, tests, CI | ✅ | `pyproject.toml`, `Makefile`, `.github/workflows/ci.yml` |
-| CSV, JSON and XML readers | 🚧 | phase 1 |
+| Readers for the three formats | 🚧 | phase 1 |
 | Field mapping and normalization | 🚧 | phase 1 |
 | Validation and the rejected-records table | 🚧 | phase 1 |
 | Quality checks: duplicates, odometer rollback | 🚧 | phase 1 |
@@ -70,10 +71,14 @@ decoding against an external API, and packaging. They are designed in [PLAN.md](
 
 ## The data
 
-The three feeds live in `data/raw/` and hold 50 service events across 12 vehicles. They are
-synthetic and written by hand, so every record in them is deliberate: 12 VINs are structurally
-valid, 5 are broken in five different ways, and the dates, units, duplicates and odometer readings
-carry the specific problems the pipeline has to survive.
+The three feeds live in `data/raw/` and hold 97 records across 24 vehicles. They are fixtures
+written for this project, but the formats are not invented. `shop_a` is a CSV whose columns are the ones a shop
+management system sends to CARFAX in its service data transfer file. `dealer_b` follows the element names of the STAR RepairOrder schema used between dealer
+management systems, namespace included. `fleet_c` is a REST style JSON export.
+
+Every defect in them is deliberate: 10 records cannot be mapped at all, and the rest carry the
+ordinary mess of a real feed, such as an odometer written as `21,000`, a unit that changes between
+records, and a shop name typed three different ways.
 
 [docs/SAMPLE_DATA.md](docs/SAMPLE_DATA.md) lists every defect and the record it belongs to. That
 list is what makes a detection rate a measurement rather than an estimate: the pipeline can be
@@ -92,7 +97,7 @@ that runs.
 make install              # creates .venv and installs the project and its dependencies
 source .venv/bin/activate
 make check                # ruff (lint and formatting) and pytest, the same commands CI runs
-make notebook             # opens JupyterLab for the exploratory work
+make kernel               # registers this environment as a Jupyter kernel
 ```
 
 The pipeline entry point is part of the work in progress and is not in the repository yet.
@@ -104,16 +109,16 @@ automotive-data-mapper/
 ├── README.md                        ✅ this file
 ├── PLAN.md                          ✅ the design, including the phases that are not built
 ├── pyproject.toml                   ✅ metadata, dependencies, lint and test configuration
-├── Makefile                         ✅ install · lint · format · test · check · notebook
+├── Makefile                         ✅ install · lint · format · test · check · kernel
 ├── .github/workflows/ci.yml         ✅ lint and tests on every push
 │
 ├── data/raw/
-│   ├── shop_a/service_records.csv        ✅ independent shop, miles, US date formats
-│   ├── dealer_b/repair_orders.json       ✅ dealership, nested orders with line items, km
-│   └── fleet_c/maintenance_events.xml    ✅ fleet provider, attributes, day-first dates
+│   ├── shop_a/service_records_20260731.csv     ✅ CSV, CARFAX service transfer column names
+│   ├── dealer_b/ProcessRepairOrder_20260731.xml ✅ STAR style repair order XML, with a namespace
+│   └── fleet_c/maintenance_events_2026-07.json  ✅ REST export, nested, mixed value types
 │
 ├── src/
-│   ├── models.py                    ✅ canonical schema, rejected record, reason codes
+│   ├── models.py                    🚧 canonical schema, rejected record, reason codes
 │   └── (readers, mapping, checks)   🚧 added as each piece works in the notebook
 │
 ├── notebooks/                       ✅ exploratory work
@@ -121,13 +126,13 @@ automotive-data-mapper/
 │   ├── SAMPLE_DATA.md               ✅ every deliberate defect and the record it is in
 │   ├── DATA_DICTIONARY.md           ✅ every canonical field and its source in each feed
 │   └── DESIGN_DECISIONS.md          ✅ what was decided, why, and what it costs
-└── tests/                           ✅ one test module per module in src
+└── tests/                           🚧 one test module per module in src
 ```
 
 ## Reason codes
 
 Nothing is dropped in silence. Every record the pipeline cannot map lands in the rejected-records
-table with one of these codes, defined in `src/models.py`.
+table with one of these codes.
 
 | Code | Meaning | Found |
 |---|---|---|
@@ -174,10 +179,11 @@ will only mark them ✅ when there is code behind them.
 
 ## Scope and disclaimers
 
-- **The service records are synthetic.** They were written by hand for this repository, with
-  defects placed on purpose. No real customer or vehicle data is used.
-- **The VINs are structurally valid.** The 12 vehicle identification numbers carry correct ISO 3779
-  check digits and real manufacturer prefixes. The 5 broken ones are broken deliberately.
+- **The service records are synthetic.** They are fixtures written for this repository, with
+  defects placed on purpose. The file formats follow real specifications, which are cited in
+  [docs/SAMPLE_DATA.md](docs/SAMPLE_DATA.md). No real customer or vehicle data is used.
+- **The VINs are structurally valid.** The 24 vehicle identification numbers carry correct ISO 3779
+  check digits and real manufacturer prefixes. The broken ones are broken deliberately.
 - **This is not a production data platform.** No orchestration engine, no distributed compute, no
   warehouse. It is a small pipeline meant to be read and audited.
 

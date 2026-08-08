@@ -2,8 +2,8 @@
 
 Every field of the canonical record, what it means, and where it comes from in each feed.
 
-The schema is defined in `src/models.py` and enforced by Pydantic. This document and that file have
-to agree. If they disagree, the file is right and this document is a bug.
+This document is the specification. `src/models.py` implements it with Pydantic, and once it does,
+the file is the authority: if the two disagree, the file is right and this document is a bug.
 
 ## Canonical record: `VehicleEvent`
 
@@ -59,65 +59,90 @@ One record the pipeline could not turn into a `VehicleEvent`.
 
 ## Source to target mapping
 
+The exact column names, paths and element names below are read from the files in `data/raw/`.
+Where each format comes from is documented in [SAMPLE_DATA.md](SAMPLE_DATA.md).
+
 ### `shop_a`, independent repair shop
 
-CSV, `data/raw/shop_a/service_records.csv`, one row per event.
+`data/raw/shop_a/service_records_20260731.csv`. Comma delimited, header row included, values
+containing a comma are quoted. One row is one service line, so several rows can share an invoice
+number.
 
 | Canonical field | Source column | Transformation |
 |---|---|---|
-| `source_record_id` | `RO_Number` | strip |
-| `vin` | `VehicleID` | strip, uppercase |
-| `event_date` | `SvcDate` | parse with `%m/%d/%Y`, then `%d-%b-%y` |
-| `odometer_km` | `Miles` | to integer, multiply by 1.609344, round |
-| `odometer_source_unit` | constant | `mi` |
-| `raw_description` | `WorkPerformed` | strip |
-| `normalized_description` | `WorkPerformed` | strip, lowercase, collapse whitespace |
-| `provider_name` | `ShopName` | strip, standardize the spelling variants |
-| `provider_city` | `City` | strip |
-| `provider_province` | `Prov` | strip, uppercase |
+| `source_record_id` | `RO_INVOICE_NUMBER` | strip |
+| `vin` | `VIN` | strip, uppercase |
+| `event_date` | `RO_OPEN_DATE` | parse `%m/%d/%Y` |
+| `odometer_km` | `MILEAGE` with `ODOMETER_MEASURE` | remove thousands separators, to integer, convert when the measure is `MI`, treat blank and `0` as unknown |
+| `odometer_source_unit` | `ODOMETER_MEASURE` | lowercase |
+| `raw_description` | `SERVICE_DESCRIPTION` | strip |
+| `normalized_description` | `SERVICE_DESCRIPTION` | strip, lowercase, collapse whitespace |
+| `provider_name` | `LOCATION_NAME` | strip, standardize the spelling variants |
+| `provider_city` | `CITY` | strip |
+| `provider_province` | `STATE` | strip, uppercase |
 
-Not mapped: `TechnicianID`, `InvoiceTotal`.
+Read and not mapped: `RO_CLOSE_DATE`, `LABOR_DESCRIPTION`, `PART_NAME_DESCRIPTION`,
+`PART_QUANTITY`, `MAKE`, `MODEL`, `MODEL_YEAR`, `PLATE`, `PLATE_STATE`, `MANAGEMENT_SYSTEM`,
+`LOCATION_ID`, `ADDRESS`, `POSTAL_CODE`, `PHONE`, `URL`.
+
+Most of those are not junk, they are data this schema has no home for yet: the plate and the
+make, model and year would matter for record linkage and for checking a VIN decode. Reporting them
+as `E010` is how that gap becomes a decision instead of an oversight.
 
 ### `dealer_b`, dealership management system
 
-JSON, `data/raw/dealer_b/repair_orders.json`. Line items are nested inside repair orders, so one
-order with two line items becomes two events that share a VIN, a date and an odometer reading.
-
-| Canonical field | Source path | Transformation |
-|---|---|---|
-| `source_record_id` | `repair_orders[].ro_id` and `lines[].line_no` | join with a dash, for example `DMS-4402-2` |
-| `vin` | `repair_orders[].vin` | strip, uppercase |
-| `event_date` | `repair_orders[].opened_at` | parse the ISO timestamp, keep the date |
-| `odometer_km` | `repair_orders[].odometer.value` | to integer, already kilometres |
-| `odometer_source_unit` | `repair_orders[].odometer.uom` | lowercase |
-| `raw_description` | `lines[].description` | strip |
-| `normalized_description` | `lines[].description` | strip, lowercase, collapse whitespace |
-| `provider_name` | `repair_orders[].dealer.name` | strip, standardize the spelling variants |
-| `provider_city` | `repair_orders[].dealer.city` | strip |
-| `provider_province` | `repair_orders[].dealer.province` | strip, uppercase |
-
-Not mapped: `export_version`, `source_system`, `pay_type`, `lines[].op_code`, `lines[].labour_hours`.
-
-### `fleet_c`, fleet provider
-
-XML, `data/raw/fleet_c/maintenance_events.xml`. Most values are attributes rather than element
-text, which is the reason this feed is here.
+`data/raw/dealer_b/ProcessRepairOrder_20260731.xml`. Every element sits in the default namespace
+`http://www.starstandard.org/STAR/5`, so a path without the namespace matches nothing. Each `Job`
+inside a `RepairOrderLineItem` is one event.
 
 | Canonical field | Source location | Transformation |
 |---|---|---|
-| `source_record_id` | `Event/@id` | strip |
-| `vin` | `Event/@vin` | strip, uppercase |
-| `event_date` | `Event/@date` | parse with `%d/%m/%Y`, day first |
-| `odometer_km` | `Event/@odometer` with `Event/@units` | to integer, convert when the unit is `MI` |
-| `odometer_source_unit` | `Event/@units` | lowercase |
-| `raw_description` | `Event/Description` text | strip |
-| `normalized_description` | `Event/Description` text | strip, lowercase, collapse whitespace |
-| `provider_name` | `Event/Vendor/@name` | strip |
-| `provider_city` | `Event/Vendor/@city` | strip |
-| `provider_province` | `Event/Vendor/@region` | strip, uppercase |
+| `source_record_id` | `RepairOrderHeader/DocumentID` and `Job/JobID` | join with a dash, for example `RO-100480-J1` |
+| `vin` | `RepairOrderLineItem/Vehicle/VehicleID` | strip, uppercase |
+| `event_date` | `RepairOrderHeader/RepairOrderOpenedDate` | parse the ISO timestamp with its offset, keep the date |
+| `odometer_km` | `InDistanceMeasure` text with its `unitCode` attribute | to integer, convert when `unitCode` is `SMI`, keep as is when `KMT` |
+| `odometer_source_unit` | `InDistanceMeasure/@unitCode` | `SMI` becomes `mi`, `KMT` becomes `km` |
+| `raw_description` | `Job/CorrectionDescription`, falling back to `Job/CustomerConcernDescription` | strip |
+| `normalized_description` | same | strip, lowercase, collapse whitespace |
+| `provider_name` | `DealerParty/OrganizationName` | strip, standardize the spelling variants |
+| `provider_city` | `DealerParty/CityName` | strip |
+| `provider_province` | `DealerParty/StateOrProvinceCountrySubDivisionID` | strip, uppercase |
 
-Not mapped: `MaintenanceExport/@provider`, `MaintenanceExport/@version`, `Event/@cost`.
+Read and not mapped: `SecondaryReferenceNumberString`, `ServiceAdvisorParty`, `LocationID`,
+`DepartmentType`, `RepairOrderStatus`, `RepairOrderCompletedDate`, `LicenseNumberString`,
+`OutDistanceMeasure`, `ServiceLaborOperationCode`, `LaborActualHoursNumeric`, and the whole
+`ApplicationArea`.
 
-Note the trap in this feed: `07/06/2024` is 7 June 2024. Reading it with a month-first parser
-produces 6 July, a date that is real, so nothing fails and the record is quietly wrong. That is why
-the date format belongs to the mapping specification of each feed rather than to a shared guess.
+**The decision that has to be written down:** each job carries two free text fields.
+`CustomerConcernDescription` is what the customer said, `CorrectionDescription` is what the
+technician did. The vehicle history needs the work performed, so the correction wins and the
+concern is only a fallback when the correction is empty. A pipeline that silently picked the first
+non-empty of the two would produce a history of complaints instead of repairs.
+
+### `fleet_c`, fleet maintenance aggregator
+
+`data/raw/fleet_c/maintenance_events_2026-07.json`. An envelope with `meta` and `records`.
+
+| Canonical field | Source path | Transformation |
+|---|---|---|
+| `source_record_id` | `records[].work_order_id` | strip |
+| `vin` | `records[].vin` | strip, uppercase |
+| `event_date` | `records[].service_date` | parse the ISO 8601 timestamp, keep the date |
+| `odometer_km` | `records[].odometer.value` with `.unit` | remove thousands separators, to integer, convert when the unit is `mi`, `null` stays unknown |
+| `odometer_source_unit` | `records[].odometer.unit` | lowercase |
+| `raw_description` | `records[].description` | strip |
+| `normalized_description` | `records[].description` | strip, lowercase, collapse whitespace |
+| `provider_name` | `records[].vendor.name` | strip |
+| `provider_city` | `records[].vendor.city` | strip |
+| `provider_province` | `records[].vendor.region` | strip, uppercase |
+
+Read and not mapped: the whole `meta` block, `records[].plate`, `records[].vendor.id`,
+`records[].invoice_total_cad`, `records[].cost_centre`.
+
+## The trap in each feed
+
+| Feed | What breaks a naive reader |
+|---|---|
+| `shop_a` | `MILEAGE` arrives as `21,000`, quoted because it contains the delimiter, so a plain `int()` raises and `pd.to_numeric` quietly returns nothing. The unit lives in a different column |
+| `dealer_b` | The XML namespace. `root.findall("RepairOrder")` returns an empty list and the feed looks empty rather than broken |
+| `fleet_c` | `odometer.value` changes type between records: number, string with a comma, and `null` |

@@ -19,7 +19,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "ruff>=0.6"]
-notebook = ["jupyterlab>=4.0"]
+notebook = ["ipykernel>=6.29"] # registers this venv as a Jupyter kernel
 
 [project.urls]
 Repository = "https://github.com/renteria-luis/automotive-data-mapper"

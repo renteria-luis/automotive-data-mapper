@@ -8,10 +8,9 @@ README says what is built. This file says what it is meant to become.
 ## 1. The problem
 
 Vehicle service data is fragmented. The same event, "replaced front brake pads", arrives from an
-independent shop as a CSV row, from a dealership as a line item inside a nested JSON repair order,
-and from a fleet provider as attributes on an XML element. Field names differ, dates come in four
-formats, the odometer is sometimes miles and sometimes kilometres, and the work description is free
-text written by whoever closed the repair order.
+independent shop as a CSV row, from a dealership as a job inside a namespaced XML repair order, and from a fleet provider as a record in a JSON export. Field names differ, dates
+come in three formats, the odometer is sometimes miles and sometimes kilometres, and the work
+description is free text written by whoever closed the repair order.
 
 Mapping the well formed records is the easy half. The half that decides whether the result can be
 trusted is what happens to the rest: a VIN with 16 characters, a date that says `pending`, an
@@ -41,8 +40,8 @@ The project is built in phases. Phase 1 is the MVP and is the only phase with co
 ```mermaid
 flowchart TD
     A1["shop_a<br/>CSV"] --> B1["csv reader"]
-    A2["dealer_b<br/>nested JSON"] --> B2["json reader"]
-    A3["fleet_c<br/>attribute XML"] --> B3["ElementTree reader"]
+    A2["dealer_b<br/>namespaced XML"] --> B2["ElementTree reader"]
+    A3["fleet_c<br/>nested JSON"] --> B3["json reader"]
 
     B1 --> C["Mapping<br/>source field to canonical field"]
     B2 --> C
@@ -62,19 +61,19 @@ flowchart TD
 
 ## 4. The three feeds
 
-All records are synthetic and written by hand. Every defect in them is deliberate and listed in
-`docs/SAMPLE_DATA.md`.
+All records are synthetic. The formats follow real specifications, cited in
+`docs/SAMPLE_DATA.md`, and every defect in them is deliberate and listed there too.
 
 | Feed | Format | What makes it awkward |
 |---|---|---|
-| `shop_a` | CSV | Two date formats plus one unparseable value, odometer in miles, the shop name typed four different ways, two columns with no canonical target |
-| `dealer_b` | JSON | Repair orders with line items nested inside them, so one order can produce several events, ISO timestamps, a null odometer, a lowercase VIN |
-| `fleet_c` | XML | Values live in attributes rather than element text, dates are day first, units switch between KM and MI inside the same feed |
+| `shop_a` | CSV, with the CARFAX service transfer column names | The odometer arrives as `21,000`, quoted because it contains the delimiter, its unit lives in a separate column and switches between `MI` and `KM`, the shop name is typed three ways, and fifteen of the twenty four columns have no canonical target |
+| `dealer_b` | XML, STAR repair order element names | A default namespace that makes a naive path match nothing, jobs nested inside repair orders so one order produces several events, the unit as an attribute, and two competing free text fields per job |
+| `fleet_c` | JSON, REST export | `odometer.value` changes type between records, being a number, a string with a comma, or `null`, and one date does not exist on a calendar |
 
 ## 5. The canonical schema
 
-Defined in `src/models.py` as a Pydantic model and documented field by field in
-`docs/DATA_DICTIONARY.md`.
+Specified in `docs/DATA_DICTIONARY.md` field by field, and implemented in `src/models.py` as a
+Pydantic model.
 
 Two principles shape it:
 
