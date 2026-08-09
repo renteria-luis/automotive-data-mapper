@@ -68,13 +68,13 @@ kept in step.
 
 ### DD-005. The sample data is written by hand, and every defect is documented
 
-**Decision.** The three feeds are 50 records written by hand, not generated. `docs/SAMPLE_DATA.md`
+**Decision.** The three feeds are 97 records written by hand, not generated. `docs/SAMPLE_DATA.md`
 lists every deliberate defect and the record it belongs to.
 
-**Why.** Fifty records is enough to show every problem the pipeline has to handle and small enough
+**Why.** Ninety seven records is enough to show every problem the pipeline has to handle and small enough
 that every row can be read and understood. The documented list is what makes detection measurable:
-the pipeline can be scored against a known total instead of an estimate, so "11 records rejected"
-becomes "11 of the 11 problems that exist".
+the pipeline can be scored against a known total instead of an estimate, so "10 records rejected"
+becomes "10 of the 10 problems that exist".
 
 **Alternative rejected.** A generator producing thousands of rows with random defects. More data,
 but nobody can say what is in it without running something, and volume proves nothing here.

@@ -152,7 +152,7 @@ this one.
 ## 9. What this project deliberately does not do
 
 - No orchestration engine, no message queue, no distributed compute and no warehouse. The dataset
-  is 50 records and fits in memory.
+  is 97 records and fits in memory.
 - No real customer data.
 - No machine learning in the MVP. A keyword rule that reaches the same accuracy as a model is
   cheaper, explainable and easier to correct, so the rules come first and anything else has to beat
