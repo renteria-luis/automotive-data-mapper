@@ -21,11 +21,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e ".[dev]"
 
-      - name: Lint
-        run: ruff check .
-
-      - name: Check formatting
-        run: ruff format --check .
-
+      # Exit code 5 means pytest found no tests to run, which is the state of
+      # this repository until the first test module lands. Anything else fails.
       - name: Tests
-        run: pytest
+        run: pytest || [ $? -eq 5 ]

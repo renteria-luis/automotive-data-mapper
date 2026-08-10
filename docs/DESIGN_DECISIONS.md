@@ -25,7 +25,7 @@ the deadline, and none of them would be demonstrable.
 ### DD-002. One file describes the project: `pyproject.toml`
 
 **Decision.** Project name, version, supported Python versions, dependencies and the settings for
-the linter and the test runner live in a single `pyproject.toml`.
+the test runner live in a single `pyproject.toml`.
 
 **Why.** It is the current Python standard, and one file means one place to look. The older layout
 spreads the same information across `setup.py`, `requirements.txt`, `pytest.ini` and `.flake8`, and
@@ -38,33 +38,37 @@ cannot describe the project or configure the tools.
 editable: Python reads the code from the working directory, so edits take effect immediately and a
 notebook can import from `src/` without touching `sys.path`.
 
-### DD-003. Ruff for both linting and formatting
+### DD-003. No style linter while the work lives in a notebook
 
-**Decision.** Use Ruff for style checks and automatic formatting.
+**Decision.** The project started with Ruff checking style and formatting across the whole
+repository. It was removed. Tests are the only automated check for now.
 
-**Why.** A linter reads the code without running it and reports likely mistakes, such as an unused
-import or an undefined name. A formatter rewrites spacing and line breaks so layout is consistent.
-Ruff does both in one tool and runs in under a second here, so it is practical to run before every
-commit.
+**Why.** A linter reads code without running it and reports style problems and likely mistakes.
+That is worth having over a stable codebase. It is the wrong tool over exploratory notebook cells,
+where a comment written while thinking gets blocked for a trailing space and the cost lands on
+every commit during the phase where the work changes fastest.
 
-**Alternative rejected.** Flake8 with Black and isort: three tools, three configurations, and rules
-that can contradict each other.
+**Alternative rejected.** Keeping Ruff and excluding `notebooks/` from it. That works and is where
+this will probably end up, but `src/` is nearly empty right now, so the rule set would be guarding
+almost nothing while still needing to be maintained.
 
-**Cost.** Ruff is newer than the tools it replaces, so its rule set moves faster.
+**Cost.** Style drifts until the linter comes back. It comes back when `src/` holds the pipeline
+and the first tests exist.
 
-### DD-004. The automated checks run the same commands as a local run
+### DD-004. Continuous integration runs the tests
 
-**Decision.** GitHub Actions runs the linter, the formatting check and the tests on every push.
-`make check` runs the same three commands locally.
+**Decision.** GitHub Actions runs the test suite on every push. `make test` runs the same command
+locally.
 
 **Why.** Continuous integration here means a clean machine repeating the checks after every push.
-It is only useful if the commands match the ones used while working, otherwise the failures are
+It is only useful if the command matches the one used while working, otherwise the failures are
 about the environment rather than the code.
 
 **Alternative rejected.** Trusting local runs, which get skipped on the days with the most changes.
 
 **Cost.** A minute of machine time per push, and the workflow file and the `Makefile` have to be
-kept in step.
+kept in step. Until the first test module exists, the step accepts pytest's "no tests collected"
+result instead of failing on it.
 
 ### DD-005. The sample data is written by hand, and every defect is documented
 

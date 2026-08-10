@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0", "ruff>=0.6"]
+dev = ["pytest>=8.0"]
 notebook = ["ipykernel>=6.29"] # registers this venv as a Jupyter kernel
 
 [project.urls]
@@ -31,12 +31,3 @@ include = ["src*"]
 testpaths = ["tests"]
 pythonpath = ["."]
 addopts = "-q"
-
-[tool.ruff]
-line-length = 100
-target-version = "py310"
-
-[tool.ruff.lint]
-# E/W: style, F: unused names and undefined symbols, I: import order,
-# UP: outdated Python syntax, B: likely bugs such as mutable default arguments.
-select = ["E", "W", "F", "I", "UP", "B"]

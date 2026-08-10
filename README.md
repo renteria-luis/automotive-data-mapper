@@ -45,7 +45,7 @@ is what makes a detection rate a measurement rather than an estimate.
 |---|---|
 | Sample feeds in three formats, with every defect documented | ✅ |
 | Canonical schema, source to target mapping and reason codes, specified | ✅ |
-| Tooling: packaging, lint, tests, CI | ✅ |
+| Tooling: packaging, tests, CI | ✅ |
 | Canonical schema implemented in Pydantic | 🚧 |
 | Readers for CSV, namespaced XML and nested JSON | 🚧 |
 | Field mapping, unit and date normalization | 🚧 |
@@ -75,7 +75,7 @@ copy.
 ```bash
 make install              # creates .venv and installs the project in editable mode
 source .venv/bin/activate
-make check                # ruff and pytest, the same commands CI runs
+make test                 # pytest, the same command CI runs
 make kernel               # registers this environment as a Jupyter kernel
 ```
 
