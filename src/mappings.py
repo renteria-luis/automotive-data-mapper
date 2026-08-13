@@ -1,0 +1,72 @@
+# src/mappings.py
+
+SHOP_A_MAP: dict[str, str | None] = {
+    "VIN": "vin",
+    "RO_OPEN_DATE": "event_date",
+    "RO_CLOSE_DATE": None,
+    "MILEAGE": "odometer_km",
+    "ODOMETER_MEASURE": "odometer_source_unit",
+    "RO_INVOICE_NUMBER": "source_record_id",
+    "SERVICE_DESCRIPTION": "raw_description",
+    "LABOR_DESCRIPTION": None,
+    "PART_NAME_DESCRIPTION": None,
+    "PART_QUANTITY": None,
+    "MAKE": None,
+    "MODEL": None,
+    "MODEL_YEAR": None,
+    "PLATE": None,
+    "PLATE_STATE": None,
+    "MANAGEMENT_SYSTEM": None,
+    "LOCATION_ID": None,
+    "LOCATION_NAME": "provider_name",
+    "ADDRESS": None,
+    "CITY": "provider_city",
+    "STATE": "provider_province",
+    "POSTAL_CODE": None,
+    "PHONE": None,
+    "URL": None,
+}
+
+DEALER_B_MAP: dict[str, str | None] = {
+    'DocumentID': 'source_record_id',
+    'JobID': 'source_record_id',
+    'VehicleID': 'vin',
+    'RepairOrderOpenedDate': 'event_date',
+    'InDistanceMeasure': 'odometer_km',
+    'unitCode': 'odometer_source_unit',
+    'CorrectionDescription': 'raw_description',
+    'CustomerConcernDescription': 'raw_description',
+    'OrganizationName': 'provider_name',
+    'CityName': 'provider_city',
+    'StateOrProvinceCountrySubDivisionID': 'provider_province',
+}
+
+DEALER_B_UNMAPPED = [
+    'SecondaryReferenceNumberString',
+    'ServiceAdvisorParty',
+    'LocationID',
+    'DepartmentType',
+    'RepairOrderStatus',
+    'RepairOrderCompletedDate',
+    'LicenseNumberString',
+    'OutDistanceMeasure',
+    'ServiceLaborOperationCode',
+    'LaborActualHoursNumeric',
+    'ApplicationArea',
+]
+
+FLEET_C_MAP: dict[str, str | None] = {
+    'work_order_id': 'source_record_id',
+    'vin': 'vin',
+    'plate': None,
+    'service_date': 'event_date',
+    'description': 'raw_description',
+    'invoice_total_cad': None,
+    'cost_centre': None,
+    'odometer.value': 'odometer_km',
+    'odometer.unit': 'odometer_source_unit',
+    'vendor.id': None,
+    'vendor.name': 'provider_name',
+    'vendor.city': 'provider_city',
+    'vendor.region': 'provider_province',
+}
