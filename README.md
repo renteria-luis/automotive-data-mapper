@@ -4,8 +4,9 @@ Vehicle service records arrive from three systems in three different formats. Th
 them into one canonical schema and separates the records it can map from the ones it cannot, with a
 reason for every rejection.
 
-> **Status: the pipeline is being written.** The sample feeds, the schema specification and the
-> tooling are in place. No pipeline code exists yet.
+> **Status: the pipeline is being written.** The three readers and the mapping rules are in
+> `src/` with tests. The canonical schema and the validation step are being written now. The
+> whole dataset checks and the report are specified and not built.
 >
 > Every claim in this README corresponds to something in this repository. Nothing is marked done
 > before it runs, and no metric is written by hand.
@@ -46,12 +47,13 @@ is what makes a detection rate a measurement rather than an estimate.
 | Sample feeds in three formats, with every defect documented | ✅ |
 | Canonical schema, source to target mapping and reason codes, specified | ✅ |
 | Tooling: packaging, tests, CI | ✅ |
+| Readers for CSV, namespaced XML and nested JSON | ✅ |
+| Source to target mapping dictionaries, audited against the files | ✅ |
 | Canonical schema implemented in Pydantic | 🚧 |
-| Readers for CSV, namespaced XML and nested JSON | 🚧 |
-| Field mapping, unit and date normalization | 🚧 |
+| Unit, date and text normalization | 🚧 |
 | Validation and the rejected records table | 🚧 |
-| Whole dataset checks: duplicates, odometer rollback, implausible readings | 🚧 |
-| Report of coverage and rejections by reason code | 🚧 |
+| Whole dataset checks: duplicates, odometer rollback, implausible readings | 📋 |
+| Report of coverage and rejections by reason code | 📋 |
 | Service taxonomy and rule based classification | 📋 |
 | VIN decoding against a public API | 📋 |
 | Human review of low confidence records | 📋 |
@@ -69,6 +71,11 @@ to change when they change.
 Exploration happens in `notebooks/`. When a piece of it works and stops changing, it moves into
 `src/` as a function with a test, and the notebook imports it from there instead of keeping its own
 copy.
+
+That has happened three times so far: `readers.py` reads the three feeds, `mappings.py` holds the
+source to target mapping for each one, and `profiling.py` counts nulls, distinct values and stray
+whitespace. The mapping tests are the audit: they fail if a dictionary and its file stop agreeing
+on which fields exist.
 
 ## Running it
 
