@@ -134,3 +134,25 @@ to test or rerun reliably tomorrow.
 
 **Cost.** The same code exists in two places for a short while, and the kernel has to be restarted
 after each move.
+
+
+
+# Redesign After First Phase
+
+**RD-001:** make `to_km` able to distinguish missing odometer values `NaN`/`null` from unreadable values `twenty thousand` so format failures are visible.
+
+**RD-002:** Make mapping dictionaries the single source of truth for column-to-field mappings, right now they're just useful  for `assert`'s and `E010`
+
+**RD-003:** make `vin_valid` actually work.
+
+**RD-004:** Detect unknown XML elements so schema changes are not silently ignored, right now we manually extract from the XML only what we need: loop through all tags.
+
+**RD-005:** Preserve the original raw record for accepted data to maintain traceability, right now only `RejectedRecord` have them.
+
+**RD-006:** Detect feed-level date-format issues by analyzing failure rates across the full feed 8% failures => bad records | 40% failures => feed format [read feed]
+
+**RD-007:** Keep one primary rejection code per record while allowing additional codes later if needed.
+
+**RD-008:** Use controlled categories **(taxonomy)** instead of free-text descriptions for cross-feed duplicate detection, right now I can detect duplicates by `VIN + date + description` but `differential fluid change` and `diff fluid change f/r` are the same and they wouldn't be marked as duplicated.
+
+**RD-009:** Design algorithm for `IMPLAUSIBLE_KM` using car year and historical general data to flag it, right now it uses 500,000 hardcoded
