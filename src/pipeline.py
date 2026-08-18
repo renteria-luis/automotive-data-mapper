@@ -4,7 +4,7 @@ import re
 
 from pydantic import ValidationError
 
-from src.mapping import INGESTED_AT, map_dealer_b, map_fleet_c, map_shop_a
+from src.mappers import INGESTED_AT, map_dealer_b, map_fleet_c, map_shop_a
 from src.models import RejectedRecord, VehicleEvent
 from src.readers import read_dealer_b, read_fleet_c, read_shop_a
 
