@@ -1,109 +1,113 @@
 # automotive-data-mapper
 
-Vehicle service records arrive from three systems in three different formats. This project maps
-them into one canonical schema and separates the records it can map from the ones it cannot, with a
-reason for every rejection.
-
-> **Status: the pipeline is being written.** The three readers and the mapping rules are in
-> `src/` with tests. The canonical schema and the validation step are being written now. The
-> whole dataset checks and the report are specified and not built.
->
-> Every claim in this README corresponds to something in this repository. Nothing is marked done
-> before it runs, and no metric is written by hand.
-
-| Marker | Meaning |
-|---|---|
-| ✅ | Implemented, and covered by a test or a real run |
-| 🚧 | In progress |
-| 📋 | Designed, not built |
+Vehicle service records come from three systems in three formats. This maps them into one schema and separates records that can be mapped from those that cannot, with a reason for each rejection.
 
 ## The problem
 
-The same event, "replaced front brake pads", arrives from an independent shop as a CSV row, from a
-dealership as a job inside a namespaced XML repair order, and from a fleet provider as a record in
-a JSON export. Field names differ. Dates come in three formats and one of them does not parse. The
-odometer is sometimes miles and sometimes kilometres, sometimes written with a thousands separator,
-sometimes empty, and occasionally lower than the reading from the year before.
+The same event, "replaced front brake pads", arrives as a CSV row from an independent shop, as a job
+inside a namespaced XML repair order from a dealership, and as a record in a JSON export from a
+fleet provider. Field names differ. The odometer is sometimes miles, sometimes kilometres, sometimes
+written `21,000`, sometimes empty.
 
-A record that is mapped wrong is worse than a record that is missing, because nothing downstream
-knows it is wrong. So the work is in what happens to the records that do not fit: they have to be
-caught, given a reason, counted, and grouped by cause so the cause can be fixed.
+A wrong mapping is worse than a missing record because it looks valid downstream. The pipeline rejects records that do not fit, assigns a reason, counts them, and groups them by cause.
 
-## The data
+## Results
 
-`data/raw/` holds 97 records across 24 vehicles in three formats. They are fixtures written for
-this project, and each format follows a real specification, cited in
-[docs/SAMPLE_DATA.md](docs/SAMPLE_DATA.md).
+97 records read, 87 mapped, 10 rejected.
 
-Every defect in them is deliberate. Ten records cannot be mapped at all, and the rest carry the
-ordinary mess of a real feed: an odometer written as `21,000`, a unit that changes between records,
-a shop name typed three ways. SAMPLE_DATA.md lists every defect and the record it belongs to, which
-is what makes a detection rate a measurement rather than an estimate.
+`docs/SAMPLE_DATA.md` lists all 10 unmappable records and their expected reason codes, and it was
+written before the code. So this is a measurement, not a claim.
+
+| | |
+|---|---|
+| Documented defects detected | 10 of 10 |
+| False positives | 0 |
+| Mapping rate | 90% |
+| Mapped but incomplete, no odometer | 4 |
+
+Rejections by code: 1 × E001, 1 × E002, 1 × E003, 3 × E004, 2 × E005, 1 × E006, 1 × E009.
+
+Some values are messy but valid: an odometer with a thousands separator, a reading in miles, or a shop name written three ways. These are normalized rather than rejected.
+
+`docs/SAMPLE_DATA.md` lists the 10 expected unmappable records and their reason codes. It was written before the code, so the results can be checked against it.
+
+## Input formats
+
+| Feed | What breaks a naive reader |
+|---|---|
+| `shop_a` CSV | `21,000` contains the delimiter, so it is quoted. Splitting on commas shifts every column after it |
+| `dealer_b` XML | Every element sits in a default namespace. `findall("RepairOrder")` returns an empty list, so the feed looks empty rather than broken |
+| `fleet_c` JSON | `odometer.value` arrives as a number, a string with a comma, and null, across records |
+
+None of these cases raises an exception, and each can produce output that looks correct.
+
+One more: a repair order can hold several jobs, and each job is its own event. A reader producing
+one row per order loses 5 of 27 and reports nothing.
+
+## Findings
+
+**Check order matters.** One vehicle reports 994,120 km. This makes the next genuine reading look like a rollback. Running the rollback check first produces 2 problems instead of 1. Removing the implausible reading first avoids the false rollback. `tests/test_checks.py` covers this.
+
+**The duplicate key needs the description.** Matching on vehicle and date flags 12 records, but 10 are valid multi-job repair orders. Adding the normalized description leaves 1 real cross-feed duplicate. This currently works because both sources use the same description, so a service taxonomy is the next step.
 
 ## Status
 
-| Component | Status |
+| | |
 |---|---|
-| Sample feeds in three formats, with every defect documented | ✅ |
-| Canonical schema, source to target mapping and reason codes, specified | ✅ |
-| Tooling: packaging, tests, CI | ✅ |
-| Readers for CSV, namespaced XML and nested JSON | ✅ |
-| Source to target mapping dictionaries, audited against the files | ✅ |
-| Canonical schema implemented in Pydantic | 🚧 |
-| Unit, date and text normalization | 🚧 |
-| Validation and the rejected records table | 🚧 |
-| Whole dataset checks: duplicates, odometer rollback, implausible readings | 📋 |
-| Report of coverage and rejections by reason code | 📋 |
-| Service taxonomy and rule based classification | 📋 |
+| Readers for CSV, namespaced XML, nested JSON | ✅ |
+| Source to target mapping, audited against the files | ✅ |
+| Canonical schema and validation in Pydantic | ✅ |
+| Rejected records table with reason codes | ✅ |
+| Whole dataset checks: implausible, rollback, cross-feed duplicate | ✅ |
+| Coverage and rejection report | ✅ |
+| Service taxonomy and rule-based classification | 📋 |
 | VIN decoding against a public API | 📋 |
-| Human review of low confidence records | 📋 |
+| Human review of low-confidence records | 📋 |
 
-The reason codes and the canonical fields are specified in
-[docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md) and are not repeated here, so there is one place
-to change when they change.
+📋 means designed in `PLAN.md`, not built. Known gaps and pending decisions are in
+`docs/DESIGN_DECISIONS.md`.
 
-## Metrics
+## Layout
 
-🚧 Not available yet. This section is filled from the pipeline's own output once the pipeline runs.
+```
+src/
+  readers.py      one reader per feed, each hiding its own trap
+  mappings.py     source to target, declared as data
+  mapping.py      row in, canonical payload out
+  transforms.py   units, dates, text, provider names
+  models.py       the schema and the reason codes, in Pydantic
+  pipeline.py     read, map, validate, split
+  checks.py       the checks that need every feed
+notebooks/
+  01_sources.ipynb    what each feed is, and where each field goes
+  02_pipeline.ipynb   the pipeline, with the decisions written down
+```
 
-## How the work is organised
-
-Exploration happens in `notebooks/`. When a piece of it works and stops changing, it moves into
-`src/` as a function with a test, and the notebook imports it from there instead of keeping its own
-copy.
-
-That has happened three times so far: `readers.py` reads the three feeds, `mappings.py` holds the
-source to target mapping for each one, and `profiling.py` counts nulls, distinct values and stray
-whitespace. The mapping tests are the audit: they fail if a dictionary and its file stop agreeing
-on which fields exist.
+Exploration happens in the notebooks. Stable code moves to `src/` with tests, notebooks keep them for now.
 
 ## Running it
 
 ```bash
-make install              # creates .venv and installs the project in editable mode
-source .venv/bin/activate
-make test                 # pytest, the same command CI runs
-make kernel               # registers this environment as a Jupyter kernel
+pip install -e .
+pytest
 ```
-
-There is no pipeline entry point yet.
 
 ## Documentation
 
-| Document | Contents |
+| | |
 |---|---|
-| [PLAN.md](PLAN.md) | The architecture, and the phases that are not built |
+| [Architecture](https://luisrenteria.me/architecture/automotive-data-mapper) | Project architecture with progress tracking |
 | [docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md) | Every canonical field, its source in each feed, and the reason codes |
-| [docs/SAMPLE_DATA.md](docs/SAMPLE_DATA.md) | Every deliberate defect, by record |
-| [docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md) | Each decision, its reason, the alternative rejected, and its cost |
+| [docs/SAMPLE_DATA.md](docs/SAMPLE_DATA.md) | Every deliberate defect, by record, with the format sources cited |
+| [docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md) | Each decision, why, what was rejected, and what it costs |
+| [PLAN.md](PLAN.md) | The phases that are not built |
 
 ## Scope
 
-- The service records are synthetic. No real customer or vehicle data is used.
-- The 24 VINs carry correct ISO 3779 check digits and real manufacturer prefixes. The broken ones
-  are broken on purpose.
-- This is a small pipeline meant to be read and audited. No orchestration engine, no distributed
-  compute, no warehouse.
+The records are synthetic. No real customer or vehicle data. The 24 VINs carry correct ISO 3779
+check digits and real manufacturer prefixes; the broken ones are broken on purpose.
+
+Small pipeline for reading and auditing the data. No orchestration engine or warehouse.
 
 ## License
 
